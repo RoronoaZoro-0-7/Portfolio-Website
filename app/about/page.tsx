@@ -1,7 +1,10 @@
+"use client"
+// ...existing code...
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
 export default function AboutPage() {
+  // ...existing code...
   return (
     <div className="min-h-screen py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -10,7 +13,7 @@ export default function AboutPage() {
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-4">About Me</h1>
             <p className="text-xl text-muted-foreground text-balance">
-              Get to know more about my background, journey, and what drives me as a developer.
+              Full-Stack Developer & Deep Learning Engineer specializing in NLP, scalable backend systems, and user-centric design. Passionate about building impactful digital solutions for real-world challenges.
             </p>
           </div>
 
@@ -23,17 +26,25 @@ export default function AboutPage() {
                     <img
                       src="/professional-developer-portrait.png"
                       alt="Profile"
-                      className="w-48 h-48 rounded-lg mx-auto mb-4 object-cover"
+                      className="w-50 h-83 rounded-lg mx-auto mb-4 object-cover hover:shadow-lg transition-shadow cursor-pointer"
                     />
                     <h2 className="text-2xl font-bold mb-2">Nadipalli Jaswanth</h2>
-                    <p className="text-muted-foreground mb-4">Full-Stack Developer</p>
+                    <p className="text-muted-foreground mb-4">B.Tech CSE, NIT Andhra Pradesh</p>
                     <div className="flex flex-wrap gap-2 justify-center">
-                      <Badge variant="secondary">React</Badge>
-                      <Badge variant="secondary">Node.js</Badge>
+                      <Badge variant="secondary">Java</Badge>
                       <Badge variant="secondary">TypeScript</Badge>
+                      <Badge variant="secondary">JavaScript</Badge>
                       <Badge variant="secondary">Python</Badge>
+                      <Badge variant="secondary">SQL</Badge>
+                      <Badge variant="secondary">React</Badge>
+                      <Badge variant="secondary">Next.js</Badge>
+                      <Badge variant="secondary">Node.js</Badge>
+                      <Badge variant="secondary">Spring Boot</Badge>
+                      <Badge variant="secondary">PyTorch</Badge>
+                      <Badge variant="secondary">TensorFlow</Badge>
                     </div>
                   </div>
+                  {/* Modal removed from About page */}
                 </CardContent>
               </Card>
             </div>
@@ -45,14 +56,13 @@ export default function AboutPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    I'm a passionate full-stack developer with over 5 years of experience creating digital solutions
-                    that make a difference. My journey began with a Computer Science degree, but my real education came
-                    from building projects that solve real problems.
+                    I am currently pursuing my B.Tech in Computer Science and Engineering at NIT Andhra Pradesh. My academic journey is complemented by hands-on experience in full-stack development and AI/ML research, with a focus on Natural Language Processing and scalable backend systems.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    I have built and deployed web platforms for institutional use, including a centralized Student Portal and a Training & Placement Cell platform serving 2,000+ students. My AI/ML projects include transformer-based sentiment analysis tools and custom GPT implementations.
                   </p>
                   <p className="text-muted-foreground leading-relaxed">
-                    I believe in writing clean, maintainable code and creating user experiences that are both beautiful
-                    and functional. When I'm not coding, you'll find me exploring new technologies, contributing to open
-                    source projects, or mentoring aspiring developers.
+                    I am passionate about learning, collaborating, and solving real-world problems through technology. I hold certifications from Microsoft, HackerRank, and NPTEL in AI, Python, and Data Science.
                   </p>
                 </CardContent>
               </Card>
@@ -63,10 +73,10 @@ export default function AboutPage() {
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2 text-muted-foreground">
-                    <li>• Building scalable web applications with Next.js and React</li>
-                    <li>• Exploring AI/ML integration in web development</li>
-                    <li>• Contributing to open source projects</li>
-                    <li>• Mentoring junior developers in my community</li>
+                    <li>• Full-stack web platforms for education and training</li>
+                    <li>• Deep learning and NLP research projects</li>
+                    <li>• Scalable backend APIs and microservices</li>
+                    <li>• AI/ML model deployment and optimization</li>
                   </ul>
                 </CardContent>
               </Card>
@@ -81,18 +91,19 @@ export default function AboutPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
-                  <h3 className="font-semibold">Bachelor of Computer Science</h3>
-                  <p className="text-sm text-muted-foreground">University of Technology • 2018-2022</p>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    Graduated Magna Cum Laude with focus on Software Engineering and Web Development
-                  </p>
+                  <h3 className="font-semibold">B.Tech, Computer Science and Engineering</h3>
+                  <p className="text-sm text-muted-foreground">National Institute of Technology, Andhra Pradesh • 2022-2026</p>
+                  <p className="text-sm text-muted-foreground mt-1">GPA: 8.23</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold">Relevant Coursework</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Data Structures, Algorithms, Database Systems, Web Development, Software Engineering, Human-Computer
-                    Interaction
-                  </p>
+                  <h3 className="font-semibold">Relevant Course Work</h3>
+                  <ul className="list-disc list-inside text-sm text-muted-foreground">
+                    Machine Learning, Natural Language Processing,
+                    Deep Learning for Computer Vision, Big Data Engineering, Web Application Development,
+                    Data Structures and Algorithms, Design and Analysis of Algorithms,
+                    Object Oriented Programming, Operating Systems, Database Management Systems,
+                    MicroProcessors, Artificial Intelligence, Software Engineering, Computer Networks
+                  </ul>
                 </div>
               </CardContent>
             </Card>
@@ -105,19 +116,19 @@ export default function AboutPage() {
                 <div className="space-y-3">
                   <div>
                     <h4 className="font-medium">Technology</h4>
-                    <p className="text-sm text-muted-foreground">AI/ML, Web3, Cloud Computing, DevOps</p>
-                  </div>
-                  <div>
-                    <h4 className="font-medium">Creative</h4>
-                    <p className="text-sm text-muted-foreground">UI/UX Design, Photography, Digital Art</p>
+                    <p className="text-sm text-muted-foreground">AI/ML, NLP, Web Development</p>
                   </div>
                   <div>
                     <h4 className="font-medium">Personal</h4>
-                    <p className="text-sm text-muted-foreground">Hiking, Reading, Playing Guitar, Cooking</p>
+                    <p className="text-sm text-muted-foreground">Anime, Reading, Traveling, Music</p>
+                  </div>
+                  <div>
+                    <h4 className="font-medium">Currently Learning</h4>
+                    <p className="text-sm text-muted-foreground">Deep Learning for Computer Vision and GEN AI</p>
                   </div>
                   <div>
                     <h4 className="font-medium">Community</h4>
-                    <p className="text-sm text-muted-foreground">Open Source Contributing, Tech Meetups, Mentoring</p>
+                    <p className="text-sm text-muted-foreground">Reading, Problem Solving, Open Source, Tech Community</p>
                   </div>
                 </div>
               </CardContent>

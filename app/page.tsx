@@ -1,9 +1,13 @@
+"use client"
+
+// ...existing code...
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowRight, Download, Mail } from "lucide-react"
 
 export default function HomePage() {
+  // ...existing code...
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -14,7 +18,7 @@ export default function HomePage() {
               <img
                 src="/professional-developer-headshot.png"
                 alt="Profile"
-                className="w-40 h-32 rounded-xl mx-auto mb-6 border-4 border-primary/20 object-cover"
+                className="w-40 h-32 rounded-xl mx-auto mb-6 border-4 border-primary/20 object-cover hover:shadow-lg transition-shadow"
               />
             </div>
 
@@ -53,19 +57,6 @@ export default function HomePage() {
             <div className="grid md:grid-cols-3 gap-8">
               <Card className="text-center">
                 <CardContent className="pt-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <div className="w-6 h-6 bg-primary rounded"></div>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3">Frontend Development</h3>
-                  <p className="text-muted-foreground">
-                    Creating responsive, interactive user interfaces with modern frameworks like React, Next.js, and
-                    Vue.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="text-center">
-                <CardContent className="pt-6">
                   <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <div className="w-6 h-6 bg-secondary rounded"></div>
                   </div>
@@ -81,9 +72,21 @@ export default function HomePage() {
                   <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <div className="w-6 h-6 bg-accent rounded"></div>
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">UI/UX Design</h3>
+                  <h3 className="text-xl font-semibold mb-3">AI/ML Projects</h3>
                   <p className="text-muted-foreground">
-                    Designing intuitive user experiences with a focus on accessibility and user-centered design.
+                    Building and deploying deep learning and NLP models, including transformer architectures, sentiment analysis, and custom GPT implementations using PyTorch, TensorFlow, and modern ML frameworks.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="text-center">
+                <CardContent className="pt-6">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <div className="w-6 h-6 bg-primary rounded"></div>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3">Frontend Development</h3>
+                  <p className="text-muted-foreground">
+                    Creating responsive, interactive user interfaces with modern frameworks like React, Next.js, and Vue.
                   </p>
                 </CardContent>
               </Card>

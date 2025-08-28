@@ -19,9 +19,17 @@ export default function ResumePage() {
         <div className="max-w-4xl mx-auto">
           {/* Action Buttons - Hidden in print */}
           <div className="flex justify-center gap-4 mb-8 print:hidden">
+            <Button asChild size="lg">
+              <a href="/resume/Nadipalli_Jaswanth_Resume.pdf" download>
+                <Download className="mr-2 h-4 w-4" />
+                Download PDF
+              </a>
+            </Button>
             <Button onClick={handleDownload} size="lg">
-              <Download className="mr-2 h-4 w-4" />
-              Download / Print PDF
+              <a href="/resume/Nadipalli_Jaswanth_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                <Print className="mr-2 h-4 w-4" />
+                Print Resume
+              </a>
             </Button>
           </div>
 

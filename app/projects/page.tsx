@@ -6,113 +6,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Github, Calendar, ChevronLeft, ChevronRight } from "lucide-react"
+import { webProjects, aiProjects } from "@/lib/projects"
 
-const webProjects = [
-  {
-    id: "ecommerce-platform",
-    title: "E-Commerce Platform",
-    description:
-      "A full-stack e-commerce solution with user authentication, payment processing, inventory management, and admin dashboard. Built with modern technologies for scalability and performance.",
-    images: [
-      "/ecommerce-platform-screenshot.png",
-      "/ecommerce-dashboard.png",
-      "/ecommerce-checkout.png",
-      "/ecommerce-products.png",
-    ],
-    technologies: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Tailwind CSS", "Vercel"],
-    liveUrl: "https://ecommerce-demo.vercel.app",
-    githubUrl: "https://github.com/johndoe/ecommerce-platform",
-    featured: true,
-    date: "2024",
-    status: "Completed",
-  },
-  {
-    id: "task-management-app",
-    title: "Task Management App",
-    description:
-      "A collaborative task management application with real-time updates, team collaboration features, and advanced filtering. Supports drag-and-drop functionality and deadline tracking.",
-    images: [
-      "/task-management-app-screenshot.png",
-      "/task-board-view.png",
-      "/task-calendar.png",
-      "/task-analytics.png",
-    ],
-    technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Express", "Material-UI"],
-    liveUrl: "https://taskmanager-demo.netlify.app",
-    githubUrl: "https://github.com/johndoe/task-manager",
-    featured: true,
-    date: "2023",
-    status: "Completed",
-  },
-  {
-    id: "weather-dashboard",
-    title: "Weather Dashboard",
-    description:
-      "A responsive weather application with location-based forecasts, interactive maps, and weather alerts. Features beautiful data visualizations and offline support.",
-    images: ["/weather-dashboard-screenshot.png", "/weather-maps.png", "/weather-charts.png"],
-    technologies: ["Vue.js", "Chart.js", "OpenWeather API", "PWA", "Vuetify"],
-    liveUrl: "https://weather-dashboard-vue.netlify.app",
-    githubUrl: "https://github.com/johndoe/weather-dashboard",
-    featured: false,
-    date: "2023",
-    status: "Completed",
-  },
-  {
-    id: "blog-platform",
-    title: "Blog Platform",
-    description:
-      "A full-featured blogging platform with markdown support, comment system, user profiles, and SEO optimization. Includes admin panel for content management.",
-    images: ["/blog-platform-screenshot.png", "/blog-editor.png", "/blog-admin.png"],
-    technologies: ["Next.js", "Prisma", "PostgreSQL", "NextAuth.js", "MDX"],
-    liveUrl: "https://blog-platform-demo.vercel.app",
-    githubUrl: "https://github.com/johndoe/blog-platform",
-    featured: false,
-    date: "2023",
-    status: "Completed",
-  },
-]
-
-const aiProjects = [
-  {
-    id: "ai-chat-application",
-    title: "AI Chat Application",
-    description:
-      "An intelligent chat application powered by AI with natural language processing, conversation history, and customizable chat themes. Built for seamless user experience.",
-    images: ["/ai-chat-app-screenshot.png", "/ai-chat-interface.png", "/ai-chat-settings.png", "/ai-chat-history.png"],
-    technologies: ["React", "OpenAI API", "Firebase", "Tailwind CSS", "Vercel AI SDK"],
-    liveUrl: "https://ai-chat-demo.vercel.app",
-    githubUrl: "https://github.com/johndoe/ai-chat-app",
-    featured: true,
-    date: "2024",
-    status: "In Progress",
-  },
-  {
-    id: "ai-image-generator",
-    title: "AI Image Generator",
-    description:
-      "A creative AI-powered image generation tool with multiple models, style presets, and batch processing capabilities. Features real-time preview and editing tools.",
-    images: ["/ai-image-generator.png", "/ai-image-gallery.png", "/ai-image-editor.png"],
-    technologies: ["Next.js", "Stable Diffusion", "DALL-E API", "Canvas API", "TypeScript"],
-    liveUrl: "https://ai-image-gen.vercel.app",
-    githubUrl: "https://github.com/johndoe/ai-image-generator",
-    featured: true,
-    date: "2024",
-    status: "Completed",
-  },
-  {
-    id: "ml-data-analyzer",
-    title: "ML Data Analyzer",
-    description:
-      "A machine learning tool for data analysis and visualization with automated insights, predictive modeling, and interactive charts. Supports multiple data formats.",
-    images: ["/ml-analyzer.png", "/ml-charts.png", "/ml-predictions.png"],
-    technologies: ["Python", "TensorFlow", "Pandas", "Plotly", "Streamlit"],
-    liveUrl: "https://ml-analyzer-demo.streamlit.app",
-    githubUrl: "https://github.com/johndoe/ml-data-analyzer",
-    featured: false,
-    date: "2023",
-    status: "Completed",
-  },
-]
+// ...existing code...
 
 function ImageSlideshow({ images, title }: { images: string[]; title: string }) {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -177,18 +73,20 @@ function ProjectCard({ project, size = "default" }: { project: any; size?: "defa
   const isLarge = size === "large"
 
   return (
-    <Card className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow">
-      <Link href={`/projects/${project.id}`}>
-        <div className={`${isLarge ? "aspect-video" : "aspect-video"} bg-muted relative overflow-hidden`}>
-          <ImageSlideshow images={project.images} title={project.title} />
-          <div className="absolute top-4 right-4">
-            <Badge variant={project.status === "Completed" ? "default" : "secondary"}>{project.status}</Badge>
-          </div>
+    <Card className="overflow-hidden hover:shadow-lg transition-shadow">
+      <div className={`${isLarge ? "aspect-video" : "aspect-video"} bg-muted relative overflow-hidden`}>
+        <ImageSlideshow images={project.images} title={project.title} />
+        <div className="absolute top-4 right-4">
+          <Badge variant={project.status === "Completed" ? "default" : "secondary"}>{project.status}</Badge>
         </div>
-      </Link>
+      </div>
       <CardHeader className={isLarge ? "" : "pb-3"}>
         <div className="flex items-center justify-between">
-          <CardTitle className={isLarge ? "text-xl" : "text-lg"}>{project.title}</CardTitle>
+          <CardTitle className={isLarge ? "text-xl" : "text-lg"}>
+            <Link href={`/projects/${project.id}`} className="hover:underline">
+              {project.title}
+            </Link>
+          </CardTitle>
           <div className="flex items-center gap-1 text-muted-foreground text-sm">
             <Calendar className="h-4 w-4" />
             {project.date}
@@ -216,12 +114,14 @@ function ProjectCard({ project, size = "default" }: { project: any; size?: "defa
         </div>
 
         <div className="flex gap-2">
+          {/*
           <Button asChild size="sm" className={isLarge ? "" : "flex-1"}>
             <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="mr-2 h-4 w-4" />
               {isLarge ? "Live Demo" : "Demo"}
             </Link>
           </Button>
+          */}
           <Button asChild variant="outline" size="sm" className={`${isLarge ? "" : "flex-1"} bg-transparent`}>
             <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
               <Github className="mr-2 h-4 w-4" />

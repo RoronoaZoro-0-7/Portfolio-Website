@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import React from "react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -8,39 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Github, Calendar, ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react"
 
-const allProjects = [
-  {
-    id: "ecommerce-platform",
-    title: "E-Commerce Platform",
-    description:
-      "A comprehensive full-stack e-commerce solution designed for modern online businesses. This platform includes user authentication, secure payment processing through Stripe, comprehensive inventory management, and a powerful admin dashboard for business owners.",
-    longDescription:
-      "This e-commerce platform represents a complete solution for online retail businesses. Built with Next.js and TypeScript for type safety and performance, it features a responsive design that works seamlessly across all devices. The platform includes user registration and authentication, shopping cart functionality, secure checkout with Stripe integration, order tracking, inventory management, and a comprehensive admin dashboard. The backend is powered by PostgreSQL for reliable data storage and includes features like product search, filtering, user reviews, and automated email notifications.",
-    images: [
-      "/ecommerce-platform-screenshot.png",
-      "/ecommerce-dashboard.png",
-      "/ecommerce-checkout.png",
-      "/ecommerce-products.png",
-    ],
-    technologies: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Tailwind CSS", "Vercel", "NextAuth.js", "Prisma"],
-    liveUrl: "https://ecommerce-demo.vercel.app",
-    githubUrl: "https://github.com/johndoe/ecommerce-platform",
-    date: "2024",
-    status: "Completed",
-    category: "Web Development",
-    features: [
-      "User authentication and profiles",
-      "Product catalog with search and filtering",
-      "Shopping cart and wishlist",
-      "Secure payment processing with Stripe",
-      "Order tracking and history",
-      "Admin dashboard for inventory management",
-      "Responsive design for all devices",
-      "Email notifications and receipts",
-    ],
-  },
-  // ... other projects would be added here
-]
+import { webProjects, aiProjects } from "@/lib/projects"
 
 function ImageGallery({ images, title }: { images: string[]; title: string }) {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -48,6 +17,7 @@ function ImageGallery({ images, title }: { images: string[]; title: string }) {
   const nextImage = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length)
   }
+  const allProjects = [...webProjects, ...aiProjects]
 
   const prevImage = () => {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)
@@ -104,9 +74,10 @@ function ImageGallery({ images, title }: { images: string[]; title: string }) {
     </div>
   )
 }
-
-export default function ProjectDetailPage({ params }: { params: { id: string } }) {
-  const project = allProjects.find((p) => p.id === params.id)
+export default function ProjectDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = React.use(params)
+  const allProjects = [...webProjects, ...aiProjects]
+  const project = allProjects.find((p) => p.id === id)
 
   if (!project) {
     notFound()
@@ -137,7 +108,7 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
                 <Calendar className="h-4 w-4" />
                 {project.date}
               </div>
-              <Badge variant="outline">{project.category}</Badge>
+              {/* Category removed: not present in shared data */}
             </div>
             <p className="text-xl text-muted-foreground leading-relaxed">{project.description}</p>
           </div>
@@ -147,7 +118,7 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
             <ImageGallery images={project.images} title={project.title} />
           </div>
 
-          {/* Project Details */}
+          {/* Project Details (simplified, only description shown) */}
           <div className="grid lg:grid-cols-3 gap-8 mb-8">
             <div className="lg:col-span-2">
               <Card>
@@ -155,21 +126,7 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
                   <CardTitle>About This Project</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground leading-relaxed mb-6">{project.longDescription}</p>
-
-                  {project.features && (
-                    <div>
-                      <h4 className="font-semibold mb-3">Key Features</h4>
-                      <ul className="space-y-2">
-                        {project.features.map((feature, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                            <span className="text-muted-foreground">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+                  <p className="text-muted-foreground leading-relaxed mb-6">{project.description}</p>
                 </CardContent>
               </Card>
             </div>
@@ -197,16 +154,11 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
                   <CardTitle>Project Links</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <Button asChild className="w-full">
-                    <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      View Live Demo
-                    </Link>
-                  </Button>
-                  <Button asChild variant="outline" className="w-full bg-transparent">
-                    <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                  {/* Live Demo button removed: liveUrl no longer present */}
+                  <Button variant="outline" className="w-full bg-transparent" aria-label="View Source Code on GitHub">
+                    <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-full h-full">
                       <Github className="mr-2 h-4 w-4" />
-                      View Source Code
+                      <span>View Source Code</span>
                     </Link>
                   </Button>
                 </CardContent>

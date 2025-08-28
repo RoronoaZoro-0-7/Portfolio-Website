@@ -4,49 +4,30 @@ import { CalendarDays, MapPin, Building } from "lucide-react"
 
 const experiences = [
   {
-    title: "Senior Full-Stack Developer",
-    company: "TechCorp Solutions",
-    location: "San Francisco, CA",
-    period: "2022 - Present",
-    type: "Full-time",
-    description:
-      "Lead development of scalable web applications serving 100K+ users. Architected microservices infrastructure and mentored junior developers.",
-    achievements: [
-      "Reduced application load time by 40% through optimization",
-      "Led team of 5 developers on major product redesign",
-      "Implemented CI/CD pipeline reducing deployment time by 60%",
-    ],
-    technologies: ["React", "Node.js", "TypeScript", "AWS", "Docker", "PostgreSQL"],
-  },
-  {
-    title: "Full-Stack Developer",
-    company: "StartupXYZ",
-    location: "Austin, TX",
-    period: "2020 - 2022",
-    type: "Full-time",
-    description:
-      "Developed and maintained multiple client projects using modern web technologies. Collaborated with design team to implement pixel-perfect UIs.",
-    achievements: [
-      "Built 15+ responsive web applications from scratch",
-      "Improved code quality by implementing automated testing",
-      "Reduced bug reports by 35% through better QA processes",
-    ],
-    technologies: ["Vue.js", "Python", "Django", "MySQL", "Redis", "Git"],
-  },
-  {
-    title: "Frontend Developer Intern",
-    company: "Digital Agency Pro",
+    title: "Full Stack Developer",
+    company: "National Institute of Technology, Andhra Pradesh",
     location: "Remote",
-    period: "Summer 2019",
+    period: "May 2025 - Sep 2025",
     type: "Internship",
-    description:
-      "Assisted in developing client websites and learned modern frontend development practices. Gained experience with responsive design and cross-browser compatibility.",
+    description: "Designed and developed full-stack applications for institutional use, including a centralized Student Portal and a Training & Placement (TNP) Cell platform serving 2,000+ students.",
     achievements: [
-      "Contributed to 8 client projects during internship",
-      "Learned React and modern JavaScript frameworks",
-      "Received outstanding intern performance review",
+      "Built scalable APIs and microservices architecture with authentication, caching, and query optimization, improving system performance by 20%.",
+      "Implemented role-based access (Admin/Student) for the TNP Cell, enabling job postings, one-click applications, and resume management."
     ],
-    technologies: ["HTML", "CSS", "JavaScript", "React", "Sass", "Webpack"],
+    technologies: ["TypeScript", "Node.js", "Express", "Prisma", "Next.js", "Nest.js", "Clerk"]
+  },
+  {
+    title: "Backend Developer Intern",
+    company: "Horeka Supply India Private Limited",
+    location: "Remote",
+    period: "Jan 2025 - Mar 2025",
+    type: "Internship",
+    description: "Built enterprise-grade Spring Boot modules, reducing DB latency by 30% through query optimization.",
+    achievements: [
+      "Developed scalable API architecture following industry best practices for internal tools.",
+      "Contributed to debugging, unit testing, documentation, and code reviews for backend services."
+    ],
+    technologies: ["Spring Boot", "Java", "MySQL", "REST API", "Git"]
   },
 ]
 
@@ -128,11 +109,11 @@ export default function ExperiencePage() {
             <CardContent>
               <div className="grid md:grid-cols-3 gap-6 text-center">
                 <div>
-                  <div className="text-3xl font-bold text-primary mb-2">5+</div>
-                  <p className="text-muted-foreground">Years Experience</p>
+                  <div className="text-3xl font-bold text-primary mb-2">7</div>
+                  <p className="text-muted-foreground">Months of Professional Experience</p>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-primary mb-2">50+</div>
+                  <div className="text-3xl font-bold text-primary mb-2">15+</div>
                   <p className="text-muted-foreground">Projects Completed</p>
                 </div>
                 <div>
