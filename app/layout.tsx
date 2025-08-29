@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   title: "Portfolio - Developer & Designer",
   description: "Professional portfolio showcasing my skills, experience, and projects",
   generator: "v0.app",
+  icons: {
+    icon: "/nj-logo.svg",
+    shortcut: "/nj-logo.svg",
+    apple: "/nj-logo.svg"
+  },
 }
 
 export default function RootLayout({
