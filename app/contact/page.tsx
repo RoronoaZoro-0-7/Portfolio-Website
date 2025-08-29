@@ -16,29 +16,41 @@ export default function ContactPage() {
     name: "",
     email: "",
     subject: "",
-    message: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
+    message: ""
+  });
+  const [submitting, setSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-
-    // Reset form
-    setFormData({ name: "", email: "", subject: "", message: "" })
-    setIsSubmitting(false)
-
-    // In a real app, you would send the data to your backend
-    alert("Thank you for your message! I'll get back to you soon.")
-  }
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setError("");
+    setSuccess(false);
+    try {
+      const res = await fetch("https://formspree.io/f/movnjbkg", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json"
+        },
+        body: new FormData(e.currentTarget)
+      });
+      const data = await res.json();
+      if (data.ok) {
+        setSuccess(true);
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setError(data.error || "Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      setError("Network error. Please try again.");
+    }
+    setSubmitting(false);
+  };
 
   return (
     <div className="min-h-screen py-12">
@@ -189,10 +201,11 @@ export default function ContactPage() {
                         <Input
                           id="name"
                           name="name"
-                          value={formData.name}
-                          onChange={handleInputChange}
                           placeholder="Your full name"
                           required
+                          value={formData.name}
+                          onChange={handleChange}
+                          disabled={submitting}
                         />
                       </div>
                       <div className="space-y-2">
@@ -201,10 +214,11 @@ export default function ContactPage() {
                           id="email"
                           name="email"
                           type="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
                           placeholder="your.email@example.com"
                           required
+                          value={formData.email}
+                          onChange={handleChange}
+                          disabled={submitting}
                         />
                       </div>
                     </div>
@@ -214,10 +228,11 @@ export default function ContactPage() {
                       <Input
                         id="subject"
                         name="subject"
-                        value={formData.subject}
-                        onChange={handleInputChange}
                         placeholder="What's this about?"
                         required
+                        value={formData.subject}
+                        onChange={handleChange}
+                        disabled={submitting}
                       />
                     </div>
 
@@ -226,28 +241,26 @@ export default function ContactPage() {
                       <Textarea
                         id="message"
                         name="message"
-                        value={formData.message}
-                        onChange={handleInputChange}
                         placeholder="Tell me about your project, questions, or how I can help..."
                         rows={6}
                         required
+                        value={formData.message}
+                        onChange={handleChange}
+                        disabled={submitting}
                       />
                     </div>
 
-                    <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-                      {isSubmitting ? (
-                        <>
-                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                          Sending...
-                        </>
-                      ) : (
-                        <>
-                          <Send className="mr-2 h-4 w-4" />
-                          Send Message
-                        </>
-                      )}
+                    <Button type="submit" size="lg" className="w-full" disabled={submitting}>
+                      <Send className="mr-2 h-4 w-4" />
+                      {submitting ? "Sending..." : "Send Message"}
                     </Button>
                   </form>
+                  {success && (
+                    <div className="mt-4 text-green-600 font-medium">Thank you! Your message has been sent.</div>
+                  )}
+                  {error && (
+                    <div className="mt-4 text-red-600 font-medium">{error}</div>
+                  )}
                 </CardContent>
               </Card>
 

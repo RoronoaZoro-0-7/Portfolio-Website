@@ -58,7 +58,7 @@ export const webProjects = [
   // liveUrl removed
     githubUrl: "https://github.com/RoronoaZoro-0-7/Learning-Management-Sytem",
     featured: false,
-    date: "2024",
+    date: "2025",
     status: "Completed",
   },
   {
@@ -79,7 +79,7 @@ export const webProjects = [
   // liveUrl removed
     githubUrl: "https://github.com/RoronoaZoro-0-7/Hostel-Management",
     featured: false,
-    date: "2023",
+    date: "2024",
     status: "Completed",
   },
   {
@@ -121,7 +121,7 @@ export const webProjects = [
   // liveUrl removed
     githubUrl: "https://github.com/RoronoaZoro-0-7/Weather-Application",
     featured: false,
-    date: "2023",
+    date: "2024",
     status: "Completed",
   },
 ]
