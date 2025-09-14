@@ -3,8 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Moon, Sun, Menu, X } from "lucide-react"
-import { useTheme } from "next-themes"
+import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
@@ -20,7 +19,6 @@ const navigation = [
 
 export function Navbar() {
   const pathname = usePathname()
-  const { theme, setTheme } = useTheme()
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
 
   return (
@@ -52,19 +50,8 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* Theme Toggle & Mobile Menu Button */}
-          <div className="flex items-center space-x-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="h-9 w-9"
-            >
-              <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
-            </Button>
-
+          {/* Mobile Menu Button */}
+          <div className="flex items-center">
             {/* Mobile menu button */}
             <div className="md:hidden">
               <Button
