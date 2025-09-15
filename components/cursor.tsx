@@ -1,9 +1,21 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export default function CustomCursor() {
+  const [isClient, setIsClient] = useState(false)
+
   useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  useEffect(() => {
+    if (!isClient || typeof window === 'undefined') return
+
+    // Disable custom cursor on mobile devices
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    if (isMobile) return
+
     const cursor = document.createElement("div")
     const cursorOutline = document.createElement("div")
 
@@ -57,10 +69,18 @@ export default function CustomCursor() {
 
     return () => {
       document.removeEventListener("mousemove", moveCursor)
-      document.body.removeChild(cursor)
-      document.body.removeChild(cursorOutline)
+      if (cursor && document.body.contains(cursor)) {
+        document.body.removeChild(cursor)
+      }
+      if (cursorOutline && document.body.contains(cursorOutline)) {
+        document.body.removeChild(cursorOutline)
+      }
     }
-  }, [])
+  }, [isClient])
+
+  if (!isClient) {
+    return null
+  }
 
   return null
 }

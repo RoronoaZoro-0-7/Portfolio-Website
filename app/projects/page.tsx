@@ -73,8 +73,8 @@ function ProjectCard({ project, size = "default" }: { project: any; size?: "defa
   const isLarge = size === "large"
 
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-      <div className={`${isLarge ? "aspect-video" : "aspect-video"} bg-muted relative overflow-hidden`}>
+    <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full">
+      <div className={`${isLarge ? "aspect-video" : "aspect-[4/3] md:aspect-video"} bg-muted relative overflow-hidden`}>
         <ImageSlideshow images={project.images} title={project.title} />
         <div className="absolute top-4 right-4">
           <Badge variant={project.status === "Completed" ? "default" : "secondary"}>{project.status}</Badge>
@@ -171,7 +171,19 @@ export default function ProjectsPage() {
             {otherWebProjects.length > 0 && (
               <div>
                 <h3 className="text-xl font-semibold mb-6">Other Web Projects</h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Mobile: Horizontal scroll */}
+                <div className="block md:hidden">
+                  <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+                    {otherWebProjects.map((project, index) => (
+                      <div key={index} className="min-w-[280px] snap-start">
+                        <ProjectCard project={project} />
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-2 text-center">← Swipe to see more projects →</p>
+                </div>
+                {/* Desktop: Grid */}
+                <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {otherWebProjects.map((project, index) => (
                     <ProjectCard key={index} project={project} />
                   ))}
@@ -198,7 +210,19 @@ export default function ProjectsPage() {
             {otherAIProjects.length > 0 && (
               <div>
                 <h3 className="text-xl font-semibold mb-6">Other AI Projects</h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Mobile: Horizontal scroll */}
+                <div className="block md:hidden">
+                  <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+                    {otherAIProjects.map((project, index) => (
+                      <div key={index} className="min-w-[280px] snap-start">
+                        <ProjectCard project={project} />
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-2 text-center">← Swipe to see more projects →</p>
+                </div>
+                {/* Desktop: Grid */}
+                <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {otherAIProjects.map((project, index) => (
                     <ProjectCard key={index} project={project} />
                   ))}

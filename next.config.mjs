@@ -9,6 +9,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // Enable external access for mobile testing
+  experimental: {
+    allowedRevalidateHeaderKeys: [],
+  },
 }
 
 export default nextConfig
