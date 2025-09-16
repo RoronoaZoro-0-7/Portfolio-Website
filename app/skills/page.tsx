@@ -157,7 +157,7 @@ export default function SkillsPage() {
                 </div>
                 <div className="hover:scale-105 transition-transform duration-200 cursor-pointer">
                   <div className="text-2xl font-bold text-primary mb-1">Backend</div>
-                  <p className="text-sm text-muted-foreground">Node.js, Python, APIs</p>
+                  <p className="text-sm text-muted-foreground">Node.js, Spring Boot, APIs</p>
                 </div>
                 <div className="hover:scale-105 transition-transform duration-200 cursor-pointer">
                   <div className="text-2xl font-bold text-primary mb-1">AI/ML</div>

@@ -8,9 +8,7 @@ import { Button } from "@/components/ui/button"
 import { ExternalLink, Github, Calendar, ChevronLeft, ChevronRight } from "lucide-react"
 import { webProjects, aiProjects } from "@/lib/projects"
 
-// ...existing code...
-
-function ImageSlideshow({ images, title }: { images: string[]; title: string }) {
+function ImageSlideshow({ images, title, isMobile = false }: { images: string[]; title: string; isMobile?: boolean }) {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const nextImage = () => {
@@ -22,7 +20,13 @@ function ImageSlideshow({ images, title }: { images: string[]; title: string }) 
   }
 
   if (images.length === 1) {
-    return <img src={images[0] || "/placeholder.svg"} alt={title} className="w-full h-full object-cover" />
+    return (
+      <img 
+        src={images[0] || "/placeholder.svg"} 
+        alt={title} 
+        className={`w-full object-cover ${isMobile ? 'h-24' : 'h-full'}`}
+      />
+    )
   }
 
   return (
@@ -30,7 +34,7 @@ function ImageSlideshow({ images, title }: { images: string[]; title: string }) 
       <img
         src={images[currentIndex] || "/placeholder.svg"}
         alt={`${title} - Image ${currentIndex + 1}`}
-        className="w-full h-full object-cover transition-opacity duration-300"
+        className={`w-full object-cover transition-opacity duration-300 ${isMobile ? 'h-24' : 'h-full'}`}
       />
 
       {images.length > 1 && (
@@ -69,62 +73,56 @@ function ImageSlideshow({ images, title }: { images: string[]; title: string }) 
   )
 }
 
-function ProjectCard({ project, size = "default" }: { project: any; size?: "default" | "large" }) {
+function ProjectCard({ project, size = "default", isMobile = false }: { project: any; size?: "default" | "large"; isMobile?: boolean }) {
   const isLarge = size === "large"
 
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full">
-      <div className={`${isLarge ? "aspect-video" : "aspect-[4/3] md:aspect-video"} bg-muted relative overflow-hidden`}>
-        <ImageSlideshow images={project.images} title={project.title} />
-        <div className="absolute top-4 right-4">
-          <Badge variant={project.status === "Completed" ? "default" : "secondary"}>{project.status}</Badge>
+      <div className={`${isLarge ? "aspect-video" : isMobile ? "h-24" : "aspect-[4/3] md:aspect-video"} bg-muted relative overflow-hidden`}>
+        <ImageSlideshow images={project.images} title={project.title} isMobile={isMobile} />
+        <div className="absolute top-2 right-2">
+          <Badge variant={project.status === "Completed" ? "default" : "secondary"} className={isMobile ? "text-xs" : ""}>
+            {project.status}
+          </Badge>
         </div>
       </div>
       <CardHeader className={isLarge ? "" : "pb-3"}>
         <div className="flex items-center justify-between">
-          <CardTitle className={isLarge ? "text-xl" : "text-lg"}>
+          <CardTitle className={`${isLarge ? "text-xl" : isMobile ? "text-base" : "text-lg"}`}>
             <Link href={`/projects/${project.id}`} className="hover:underline">
               {project.title}
             </Link>
           </CardTitle>
-          <div className="flex items-center gap-1 text-muted-foreground text-sm">
-            <Calendar className="h-4 w-4" />
+          <div className={`flex items-center gap-1 text-muted-foreground ${isMobile ? "text-xs" : "text-sm"}`}>
+            <Calendar className="h-3 w-3" />
             {project.date}
           </div>
         </div>
       </CardHeader>
-      <CardContent>
-        <p className={`text-muted-foreground mb-4 leading-relaxed ${!isLarge ? "text-sm line-clamp-2" : ""}`}>
+      <CardContent className={isMobile ? "p-3 pt-0" : ""}>
+        <p className={`text-muted-foreground mb-4 leading-relaxed ${!isLarge ? "text-sm line-clamp-2" : ""} ${isMobile ? "text-xs line-clamp-1 mb-2" : ""}`}>
           {project.description}
         </p>
 
-        <div className="mb-4">
-          <div className="flex flex-wrap gap-2">
-            {(isLarge ? project.technologies : project.technologies.slice(0, 3)).map((tech: string, i: number) => (
-              <Badge key={i} variant="outline" className="text-xs">
+        <div className={isMobile ? "mb-2" : "mb-4"}>
+          <div className="flex flex-wrap gap-1">
+            {(isLarge ? project.technologies : project.technologies.slice(0, isMobile ? 2 : 3)).map((tech: string, i: number) => (
+              <Badge key={i} variant="outline" className={isMobile ? "text-xs px-1 py-0" : "text-xs"}>
                 {tech}
               </Badge>
             ))}
-            {!isLarge && project.technologies.length > 3 && (
-              <Badge variant="outline" className="text-xs">
-                +{project.technologies.length - 3}
+            {!isLarge && project.technologies.length > (isMobile ? 2 : 3) && (
+              <Badge variant="outline" className={isMobile ? "text-xs px-1 py-0" : "text-xs"}>
+                +{project.technologies.length - (isMobile ? 2 : 3)}
               </Badge>
             )}
           </div>
         </div>
 
         <div className="flex gap-2">
-          {/*
-          <Button asChild size="sm" className={isLarge ? "" : "flex-1"}>
-            <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-              <ExternalLink className="mr-2 h-4 w-4" />
-              {isLarge ? "Live Demo" : "Demo"}
-            </Link>
-          </Button>
-          */}
-          <Button asChild variant="outline" size="sm" className={`${isLarge ? "" : "flex-1"} bg-transparent`}>
+          <Button asChild variant="outline" size="sm" className={`${isLarge ? "" : "flex-1"} bg-transparent ${isMobile ? "text-xs px-2 py-1 h-auto" : ""}`}>
             <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-              <Github className="mr-2 h-4 w-4" />
+              <Github className={`mr-1 ${isMobile ? "h-3 w-3" : "h-4 w-4"}`} />
               {isLarge ? "Source Code" : "Code"}
             </Link>
           </Button>
@@ -173,10 +171,10 @@ export default function ProjectsPage() {
                 <h3 className="text-xl font-semibold mb-6">Other Web Projects</h3>
                 {/* Mobile: Horizontal scroll */}
                 <div className="block md:hidden">
-                  <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+                  <div className="flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
                     {otherWebProjects.map((project, index) => (
-                      <div key={index} className="min-w-[280px] snap-start">
-                        <ProjectCard project={project} />
+                      <div key={index} className="min-w-[250px] snap-start slide-in-mobile" style={{ animationDelay: `${index * 0.1}s` }}>
+                        <ProjectCard project={project} isMobile={true} />
                       </div>
                     ))}
                   </div>
@@ -212,10 +210,10 @@ export default function ProjectsPage() {
                 <h3 className="text-xl font-semibold mb-6">Other AI Projects</h3>
                 {/* Mobile: Horizontal scroll */}
                 <div className="block md:hidden">
-                  <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+                  <div className="flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
                     {otherAIProjects.map((project, index) => (
-                      <div key={index} className="min-w-[280px] snap-start">
-                        <ProjectCard project={project} />
+                      <div key={index} className="min-w-[250px] snap-start slide-in-mobile" style={{ animationDelay: `${index * 0.1}s` }}>
+                        <ProjectCard project={project} isMobile={true} />
                       </div>
                     ))}
                   </div>
