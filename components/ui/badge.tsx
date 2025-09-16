@@ -5,18 +5,18 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-  "badge inline-flex items-center justify-center rounded-md px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-all duration-300 ease-out overflow-hidden cursor-pointer",
+  "inline-flex items-center justify-center rounded-md px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-colors duration-150 ease-out overflow-hidden",
   {
     variants: {
       variant: {
         default:
-          "border border-white/20 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white/30 hover:shadow-lg hover:shadow-cyan-500/20",
+          "border border-white/15 bg-white/5 text-white hover:bg-white/10 hover:border-white/20",
         secondary:
-          "border border-purple-300/20 bg-purple-500/10 backdrop-blur-sm text-purple-100 hover:bg-purple-500/20 hover:border-purple-300/30 hover:shadow-lg hover:shadow-purple-500/20",
+          "border border-purple-300/15 bg-purple-500/5 text-purple-100 hover:bg-purple-500/10 hover:border-purple-300/20",
         destructive:
-          "border border-red-300/20 bg-red-500/10 backdrop-blur-sm text-red-100 hover:bg-red-500/20 hover:border-red-300/30 hover:shadow-lg hover:shadow-red-500/20",
+          "border border-red-300/15 bg-red-500/5 text-red-100 hover:bg-red-500/10 hover:border-red-300/20",
         outline:
-          "border border-cyan-300/20 bg-cyan-500/5 backdrop-blur-sm text-cyan-100 hover:bg-cyan-500/15 hover:border-cyan-300/30 hover:shadow-lg hover:shadow-cyan-500/20",
+          "border border-cyan-300/15 bg-cyan-500/3 text-cyan-100 hover:bg-cyan-500/8 hover:border-cyan-300/20",
       },
     },
     defaultVariants: {

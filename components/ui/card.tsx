@@ -7,18 +7,16 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="card"
       className={cn(
-        // Glassmorphism effect - semi-transparent with backdrop blur
-        "bg-white/5 backdrop-blur-xl border border-white/10 text-card-foreground flex flex-col gap-6 rounded-xl py-6",
-        // Enhanced shadow with glow effect  
-        "shadow-2xl shadow-black/50",
-        // Subtle glow border effect
-        "before:absolute before:inset-0 before:rounded-xl before:bg-gradient-to-r before:from-cyan-500/10 before:via-purple-500/5 before:to-blue-500/10 before:p-[1px] before:-z-10",
-        // Hover effects for interactivity
-        "hover:bg-white/10 hover:border-white/20 hover:shadow-cyan-500/20 hover:shadow-2xl",
-        // Smooth transitions
-        "transition-all duration-500 ease-out",
-        // Position relative for pseudo elements
-        "relative overflow-hidden",
+        // Optimized glassmorphism - less blur for better performance
+        "bg-white/3 backdrop-blur-sm border border-white/5 text-card-foreground flex flex-col gap-6 rounded-xl py-6",
+        // Simplified shadow
+        "shadow-lg shadow-black/25",
+        // Simple hover effect - no complex gradients
+        "hover:bg-white/5 hover:border-white/10",
+        // Fast transition
+        "transition-colors duration-200 ease-out",
+        // Basic positioning
+        "relative",
         className
       )}
       {...props}

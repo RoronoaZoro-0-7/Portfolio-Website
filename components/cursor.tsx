@@ -10,77 +10,86 @@ export default function CustomCursor() {
   }, [])
 
   useEffect(() => {
-    if (!isClient || typeof window === 'undefined') return
+    if (!isClient) return
 
     // Disable custom cursor on mobile devices
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
     if (isMobile) return
 
-    const cursor = document.createElement("div")
-    const cursorOutline = document.createElement("div")
+    console.log('Creating working cursor...')
 
-    cursor.className = "cursor-dot"
-    cursorOutline.className = "cursor-outline"
+    // Hide default cursor
+    document.body.style.cursor = 'none'
 
-    document.body.appendChild(cursor)
-    document.body.appendChild(cursorOutline)
+    // Create cursor elements
+    const dot = document.createElement("div")
+    const circle = document.createElement("div")
+    
+    // Style the dot
+    Object.assign(dot.style, {
+      width: '8px',
+      height: '8px',
+      background: 'linear-gradient(45deg, #06b6d4, #3b82f6, #8b5cf6)',
+      borderRadius: '50%',
+      position: 'fixed',
+      pointerEvents: 'none',
+      zIndex: '99999',
+      boxShadow: '0 0 20px rgba(59, 130, 246, 0.8)',
+      transform: 'translate(-50%, -50%)'
+    })
+    
+    // Style the circle
+    Object.assign(circle.style, {
+      width: '40px',
+      height: '40px',
+      border: '2px solid rgba(59, 130, 246, 0.6)',
+      borderRadius: '50%',
+      position: 'fixed',
+      pointerEvents: 'none',
+      zIndex: '99998',
+      background: 'rgba(59, 130, 246, 0.05)',
+      transform: 'translate(-50%, -50%)',
+      transition: 'all 0.4s ease-out'
+    })
+    
+    document.body.appendChild(dot)
+    document.body.appendChild(circle)
+    
+    console.log('Cursor elements created and added')
 
     let mouseX = 0
     let mouseY = 0
-    let outlineX = 0
-    let outlineY = 0
 
-    const moveCursor = (e: MouseEvent) => {
+    const updateCursor = (e: MouseEvent) => {
       mouseX = e.clientX
       mouseY = e.clientY
-
-      cursor.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`
+      
+      // Move dot instantly
+      dot.style.left = mouseX + 'px'
+      dot.style.top = mouseY + 'px'
+      
+      // Move circle with slight delay
+      setTimeout(() => {
+        circle.style.left = mouseX + 'px'
+        circle.style.top = mouseY + 'px'
+      }, 100)
     }
 
-    const moveOutline = () => {
-      const distX = mouseX - outlineX
-      const distY = mouseY - outlineY
-
-      outlineX += distX * 0.1
-      outlineY += distY * 0.1
-
-      cursorOutline.style.transform = `translate(${outlineX - 16}px, ${outlineY - 16}px)`
-
-      requestAnimationFrame(moveOutline)
-    }
-
-    document.addEventListener("mousemove", moveCursor)
-    moveOutline()
-
-    // Hover effects
-    const hoverElements = document.querySelectorAll('button, a, [role="button"]')
-
-    hoverElements.forEach((el) => {
-      el.addEventListener("mouseenter", () => {
-        cursor.style.transform += " scale(1.5)"
-        cursorOutline.style.transform += " scale(1.5)"
-      })
-
-      el.addEventListener("mouseleave", () => {
-        cursor.style.transform = cursor.style.transform.replace(" scale(1.5)", "")
-        cursorOutline.style.transform = cursorOutline.style.transform.replace(" scale(1.5)", "")
-      })
-    })
+    document.addEventListener('mousemove', updateCursor)
+    
+    // Set initial position
+    dot.style.left = '50px'
+    dot.style.top = '50px'
+    circle.style.left = '50px'
+    circle.style.top = '50px'
 
     return () => {
-      document.removeEventListener("mousemove", moveCursor)
-      if (cursor && document.body.contains(cursor)) {
-        document.body.removeChild(cursor)
-      }
-      if (cursorOutline && document.body.contains(cursorOutline)) {
-        document.body.removeChild(cursorOutline)
-      }
+      document.body.style.cursor = 'auto'
+      document.removeEventListener('mousemove', updateCursor)
+      if (dot.parentNode) dot.parentNode.removeChild(dot)
+      if (circle.parentNode) circle.parentNode.removeChild(circle)
     }
   }, [isClient])
-
-  if (!isClient) {
-    return null
-  }
 
   return null
 }
