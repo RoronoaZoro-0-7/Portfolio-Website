@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { CalendarDays, MapPin, Building } from "lucide-react"
 
@@ -37,92 +37,73 @@ export default function ExperiencePage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4">Experience</h1>
-            <p className="text-xl text-muted-foreground text-balance">
+          <div className="text-center mb-10 page-hero">
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 section-heading-center">Experience</h1>
+            <p className="text-lg text-muted-foreground text-balance mt-6 max-w-2xl mx-auto">
               My professional journey and the roles that have shaped my career in software development.
             </p>
           </div>
 
           {/* Experience Timeline */}
-          <div className="space-y-8">
+          <div className="space-y-5">
             {experiences.map((exp, index) => (
-              <Card key={index} className="relative">
-                <CardHeader>
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                    <div>
-                      <CardTitle className="text-xl mb-2">{exp.title}</CardTitle>
-                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-muted-foreground">
-                        <div className="flex items-center gap-1">
-                          <Building className="h-4 w-4" />
-                          <span className="font-medium">{exp.company}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <MapPin className="h-4 w-4" />
-                          <span>{exp.location}</span>
-                        </div>
+              <div key={index} className="timeline-card">
+              <Card className="relative card-glow overflow-hidden">
+                <CardContent className="pt-5 pb-5">
+                  {/* Top row: title + meta */}
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
+                    <div className="min-w-0">
+                      <h3 className="text-lg font-bold leading-tight">{exp.title}</h3>
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-sm text-muted-foreground">
+                        <span className="flex items-center gap-1"><Building className="h-3.5 w-3.5" />{exp.company}</span>
+                        <span className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5" />{exp.location}</span>
+                        <span className="flex items-center gap-1"><CalendarDays className="h-3.5 w-3.5" />{exp.period}</span>
                       </div>
                     </div>
-                    <div className="flex flex-col items-start md:items-end gap-2">
-                      <div className="flex items-center gap-1 text-muted-foreground">
-                        <CalendarDays className="h-4 w-4" />
-                        <span>{exp.period}</span>
-                      </div>
-                      <Badge variant={exp.type === "Full-time" ? "default" : "secondary"}>{exp.type}</Badge>
-                    </div>
+                    <Badge variant={exp.type === "Full-time" ? "default" : "secondary"} className="badge-glow shrink-0">{exp.type}</Badge>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">{exp.description}</p>
 
-                  <div className="mb-4">
-                    <h4 className="font-semibold mb-2">Key Achievements:</h4>
-                    <ul className="space-y-1">
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-3">{exp.description}</p>
+
+                  {/* Achievements */}
+                  <div className="mb-3">
+                    <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1.5">Key Achievements</h4>
+                    <ul className="space-y-0.5">
                       {exp.achievements.map((achievement, i) => (
-                        <li key={i} className="text-muted-foreground text-sm">
-                          • {achievement}
+                        <li key={i} className="text-muted-foreground text-sm pl-3 relative before:content-[''] before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-1.5 before:rounded-full before:bg-[var(--t2)]">
+                          {achievement}
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div>
-                    <h4 className="font-semibold mb-2">Technologies Used:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {exp.technologies.map((tech, i) => (
-                        <Badge key={i} variant="outline">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
+                  {/* Technologies */}
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    {exp.technologies.map((tech, i) => (
+                      <Badge key={i} variant="outline" className="skill-badge text-xs py-0.5 px-2">
+                        {tech}
+                      </Badge>
+                    ))}
                   </div>
                 </CardContent>
               </Card>
+              </div>
             ))}
           </div>
 
           {/* Additional Info */}
-          <Card className="mt-12">
-            <CardHeader>
-              <CardTitle>Professional Summary</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-3 gap-6 text-center">
-                <div>
-                  <div className="text-3xl font-bold text-primary mb-2">7</div>
-                  <p className="text-muted-foreground">Months of Professional Experience</p>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-primary mb-2">15+</div>
-                  <p className="text-muted-foreground">Projects Completed</p>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-primary mb-2">15+</div>
-                  <p className="text-muted-foreground">Technologies Mastered</p>
-                </div>
+          <div className="grid grid-cols-3 gap-3 mt-8">
+            {[
+              { value: "7", label: "Months Experience" },
+              { value: "15+", label: "Projects Completed" },
+              { value: "15+", label: "Technologies Mastered" },
+            ].map((s, i) => (
+              <div key={i} className="stat-card">
+                <div className="stat-value">{s.value}</div>
+                <p className="text-xs text-muted-foreground mt-1">{s.label}</p>
               </div>
-            </CardContent>
-          </Card>
+            ))}
+          </div>
         </div>
       </div>
     </div>

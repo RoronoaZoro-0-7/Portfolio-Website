@@ -9,7 +9,7 @@ export default function NotFound() {
         {/* Animated 404 */}
         <div className="space-y-4">
           <h1 className="text-8xl font-bold text-primary animate-bounce">404</h1>
-          <div className="h-1 w-24 mx-auto bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full animate-pulse"></div>
+          <div className="h-1 w-24 mx-auto gradient-divider rounded-full animate-pulse"></div>
         </div>
         
         {/* Error Message */}

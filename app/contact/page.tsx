@@ -57,17 +57,17 @@ export default function ContactPage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4">Contact Me</h1>
-            <p className="text-xl text-muted-foreground text-balance">
+          <div className="text-center mb-10 page-hero">
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 section-heading-center">Contact Me</h1>
+            <p className="text-lg text-muted-foreground text-balance mt-6 max-w-2xl mx-auto">
               Let's discuss your project, collaboration opportunities, or just say hello. I'd love to hear from you!
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-6">
             {/* Contact Information */}
             <div className="lg:col-span-1 space-y-6">
-              <Card>
+              <Card className="card-glow">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Mail className="h-5 w-5 text-primary" />
@@ -75,7 +75,7 @@ export default function ContactPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors">
                     <Mail className="h-4 w-4 text-muted-foreground" />
                     <div>
                       <p className="font-medium">Email</p>
@@ -88,7 +88,7 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors">
                     <Phone className="h-4 w-4 text-muted-foreground" />
                     <div>
                       <p className="font-medium">Phone</p>
@@ -98,7 +98,7 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors">
                     <MapPin className="h-4 w-4 text-muted-foreground" />
                     <div>
                       <p className="font-medium">Location</p>
@@ -106,7 +106,7 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors">
                     <Clock className="h-4 w-4 text-muted-foreground" />
                     <div>
                       <p className="font-medium">Response Time</p>
@@ -114,7 +114,7 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors">
                     <Globe className="h-4 w-4 text-muted-foreground" />
                     <div>
                       <p className="font-medium">Timezone</p>
@@ -124,7 +124,7 @@ export default function ContactPage() {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="card-glow">
                 <CardHeader>
                   <CardTitle>Social Media</CardTitle>
                 </CardHeader>
@@ -160,7 +160,7 @@ export default function ContactPage() {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="card-glow">
                 <CardHeader>
                   <CardTitle>Availability</CardTitle>
                 </CardHeader>
@@ -186,7 +186,7 @@ export default function ContactPage() {
 
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <Card>
+              <Card className="card-glow">
                 <CardHeader>
                   <CardTitle>Send me a message</CardTitle>
                   <p className="text-muted-foreground">
@@ -206,6 +206,7 @@ export default function ContactPage() {
                           value={formData.name}
                           onChange={handleChange}
                           disabled={submitting}
+                          className="input-glow"
                         />
                       </div>
                       <div className="space-y-2">
@@ -219,6 +220,7 @@ export default function ContactPage() {
                           value={formData.email}
                           onChange={handleChange}
                           disabled={submitting}
+                          className="input-glow"
                         />
                       </div>
                     </div>
@@ -233,6 +235,7 @@ export default function ContactPage() {
                         value={formData.subject}
                         onChange={handleChange}
                         disabled={submitting}
+                        className="input-glow"
                       />
                     </div>
 
@@ -247,10 +250,11 @@ export default function ContactPage() {
                         value={formData.message}
                         onChange={handleChange}
                         disabled={submitting}
+                        className="input-glow"
                       />
                     </div>
 
-                    <Button type="submit" size="lg" className="w-full" disabled={submitting}>
+                    <Button type="submit" size="lg" className="w-full btn-gradient" disabled={submitting}>
                       <Send className="mr-2 h-4 w-4" />
                       {submitting ? "Sending..." : "Send Message"}
                     </Button>
@@ -265,7 +269,7 @@ export default function ContactPage() {
               </Card>
 
               {/* FAQ */}
-              <Card className="mt-6">
+              <Card className="mt-6 card-glow">
                 <CardHeader>
                   <CardTitle>Frequently Asked Questions</CardTitle>
                 </CardHeader>

@@ -111,22 +111,22 @@ export default function CertificationsPage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4">Certifications</h1>
-            <p className="text-xl text-muted-foreground text-balance">
+          <div className="text-center mb-10 page-hero">
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 section-heading-center">Certifications</h1>
+            <p className="text-lg text-muted-foreground text-balance mt-6 max-w-2xl mx-auto">
               Professional certifications and credentials that validate my expertise in various technologies and methodologies.
             </p>
           </div>
 
           {/* Active Certifications */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold mb-8 flex items-center gap-2">
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 section-heading">
               <Award className="h-6 w-6 text-primary" />
               Professional Certifications
             </h2>
-            <div className="grid lg:grid-cols-2 gap-6">
+            <div className="grid lg:grid-cols-2 gap-5">
               {activeCertifications.map((cert, index) => (
-                <Card key={index} className="relative overflow-hidden">
+                <Card key={index} className="relative overflow-hidden card-glow">
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div>
@@ -139,7 +139,7 @@ export default function CertificationsPage() {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="mb-4">
+                    <div className="mb-4 cert-image-wrap">
                       <img
                         src={cert.certificateImage || "/placeholder.svg?height=300&width=300&query=professional certificate"}
                         alt={`${cert.title} Certificate`}
@@ -161,7 +161,7 @@ export default function CertificationsPage() {
                       <span className="font-medium text-sm mb-2 block">Skills Validated:</span>
                       <div className="flex flex-wrap gap-1">
                         {cert.skills.map((skill, i) => (
-                          <Badge key={i} variant="outline" className="text-xs">
+                          <Badge key={i} variant="outline" className="text-xs skill-badge">
                             {skill}
                           </Badge>
                         ))}
@@ -190,8 +190,8 @@ export default function CertificationsPage() {
 
           {/* Continuing Education */}
           <section>
-            <h2 className="text-2xl font-bold mb-8">Continuing Education</h2>
-            <Card>
+            <h2 className="text-2xl font-bold mb-6 section-heading">Continuing Education</h2>
+            <Card className="card-glow">
               <CardHeader>
                 <CardTitle>Recent Courses & Training</CardTitle>
               </CardHeader>

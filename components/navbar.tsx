@@ -22,26 +22,26 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav className="sticky top-0 z-50 w-full nav-glass">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="text-xl font-bold text-primary">
-              Portfolio
+            <Link href="/" className="text-xl nav-brand">
+              &lt;NJ /&gt;
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="ml-10 flex items-baseline space-x-1">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    "px-3 py-2 rounded-md text-sm font-medium transition-colors hover:text-primary",
-                    pathname === item.href ? "text-primary bg-accent/10" : "text-muted-foreground hover:bg-accent/5",
+                    "px-3 py-1.5 rounded-lg text-sm font-medium transition-all nav-link-pill",
+                    pathname === item.href ? "active" : "text-muted-foreground",
                   )}
                 >
                   {item.name}

@@ -105,50 +105,49 @@ export default function AchievementsPage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4">Achievements</h1>
-            <p className="text-xl text-muted-foreground text-balance">
+          <div className="text-center mb-10 page-hero">
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 section-heading-center">Achievements</h1>
+            <p className="text-lg text-muted-foreground text-balance mt-6 max-w-2xl mx-auto">
               Recognition, awards, and milestones that highlight my professional journey and contributions to the tech
               community.
             </p>
           </div>
 
           {/* Stats Overview */}
-          <div className="grid md:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
             {stats.map((stat, index) => (
-              <Card key={index} className="text-center">
-                <CardContent className="pt-6">
-                  <stat.icon className="h-8 w-8 mx-auto mb-3 text-primary" />
-                  <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
-                  <p className="text-sm text-muted-foreground">{stat.label}</p>
-                </CardContent>
-              </Card>
+              <div key={index} className="stat-card">
+                <stat.icon className="h-6 w-6 mx-auto mb-2 text-muted-foreground" />
+                <div className="stat-value">{stat.value}</div>
+                <p className="text-xs text-muted-foreground mt-1">{stat.label}</p>
+              </div>
             ))}
           </div>
 
           {/* Major Achievements */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold mb-8">Major Achievements</h2>
-            <div className="grid md:grid-cols-2 gap-6">
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold mb-6 section-heading">Major Achievements</h2>
+            <div className="grid md:grid-cols-2 gap-4">
               {achievements.map((achievement, index) => (
-                <Card key={index} className="relative overflow-hidden">
-                  <CardHeader>
-                    <div className="flex items-start gap-4">
-                      <div className={`p-2 rounded-lg bg-muted ${achievement.color}`}>
-                        <achievement.icon className="h-6 w-6" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between mb-2">
-                          <CardTitle className="text-lg">{achievement.title}</CardTitle>
-                          <Badge variant="outline">{achievement.category}</Badge>
+                <Card key={index} className="achievement-card card-glow">
+                  <CardContent className="pt-5 pb-5">
+                    <div className="achievement-content">
+                      <div className="achievement-top-row">
+                        <div className={`p-2 rounded-lg bg-muted/50 shrink-0 ${achievement.color}`}>
+                          <achievement.icon className="h-5 w-5" />
                         </div>
-                        <p className="text-sm text-muted-foreground">{achievement.organization}</p>
-                        <p className="text-sm text-muted-foreground">{achievement.date}</p>
+                        <div className="min-w-0 flex-1">
+                          <h3 className="text-base font-semibold leading-snug mb-1">{achievement.title}</h3>
+                          <div className="achievement-meta">
+                            <span className="text-xs text-muted-foreground">{achievement.organization}</span>
+                            <span className="text-xs text-muted-foreground opacity-40">|</span>
+                            <span className="text-xs text-muted-foreground">{achievement.date}</span>
+                            <Badge variant="outline" className="text-[10px] px-1.5 py-0 badge-glow">{achievement.category}</Badge>
+                          </div>
+                        </div>
                       </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed pl-11">{achievement.description}</p>
                     </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground leading-relaxed">{achievement.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -157,8 +156,8 @@ export default function AchievementsPage() {
 
           {/* Recognition & Media */}
           <section>
-            <h2 className="text-2xl font-bold mb-8">Recognition & Media</h2>
-            <Card>
+            <h2 className="text-2xl font-bold mb-6 section-heading">Recognition & Media</h2>
+            <Card className="card-glow">
               <CardHeader>
                 <CardTitle>Notable Mentions</CardTitle>
               </CardHeader>
@@ -176,7 +175,7 @@ export default function AchievementsPage() {
           </section>
 
           {/* Call to Action */}
-          <Card className="mt-12 bg-primary/5 border-primary/20">
+          <Card className="mt-8 card-glow" style={{ borderColor: 'rgba(59,130,246,0.2)', background: 'rgba(59,130,246,0.03)' }}>
             <CardContent className="pt-6">
               <div className="text-center">
                 <h3 className="text-2xl font-bold mb-4">Ready to Achieve More Together?</h3>
@@ -184,10 +183,10 @@ export default function AchievementsPage() {
                   Let's collaborate on your next project and create something amazing.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Badge variant="secondary" className="text-sm px-4 py-2">
+                  <Badge className="text-sm px-4 py-2 badge-glow">
                     Available for new opportunities
                   </Badge>
-                  <Badge variant="outline" className="text-sm px-4 py-2">
+                  <Badge variant="outline" className="text-sm px-4 py-2 badge-glow">
                     Open to collaboration
                   </Badge>
                 </div>

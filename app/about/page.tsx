@@ -10,38 +10,38 @@ export default function AboutPage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4">About Me</h1>
-            <p className="text-xl text-muted-foreground text-balance">
+          <div className="text-center mb-10 page-hero">
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 section-heading-center">About Me</h1>
+            <p className="text-lg text-muted-foreground text-balance mt-6 max-w-2xl mx-auto">
               Full-Stack Developer & Deep Learning Engineer specializing in NLP, scalable backend systems, and user-centric design. Passionate about building impactful digital solutions for real-world challenges.
             </p>
           </div>
 
           {/* Profile Section */}
-          <div className="grid lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid lg:grid-cols-3 gap-6 mb-8">
             <div className="lg:col-span-1">
-              <Card>
+              <Card className="card-glow">
                 <CardContent className="pt-6">
                   <div className="text-center">
                     <img
                       src="/professional-developer-portrait.png"
                       alt="Profile"
-                      className="w-50 h-83 rounded-lg mx-auto mb-4 object-cover hover:shadow-lg transition-shadow cursor-pointer"
+                      className="w-50 h-83 rounded-lg mx-auto mb-4 object-cover hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] transition-shadow duration-500 cursor-pointer"
                     />
                     <h2 className="text-2xl font-bold mb-2">Nadipalli Jaswanth</h2>
                     <p className="text-muted-foreground mb-4">B.Tech CSE, NIT Andhra Pradesh</p>
                     <div className="flex flex-wrap gap-2 justify-center">
-                      <Badge variant="secondary">Java</Badge>
-                      <Badge variant="secondary">TypeScript</Badge>
-                      <Badge variant="secondary">JavaScript</Badge>
-                      <Badge variant="secondary">Python</Badge>
-                      <Badge variant="secondary">SQL</Badge>
-                      <Badge variant="secondary">React</Badge>
-                      <Badge variant="secondary">Next.js</Badge>
-                      <Badge variant="secondary">Node.js</Badge>
-                      <Badge variant="secondary">Spring Boot</Badge>
-                      <Badge variant="secondary">PyTorch</Badge>
-                      <Badge variant="secondary">TensorFlow</Badge>
+                      <Badge variant="secondary" className="skill-badge">Java</Badge>
+                      <Badge variant="secondary" className="skill-badge">TypeScript</Badge>
+                      <Badge variant="secondary" className="skill-badge">JavaScript</Badge>
+                      <Badge variant="secondary" className="skill-badge">Python</Badge>
+                      <Badge variant="secondary" className="skill-badge">SQL</Badge>
+                      <Badge variant="secondary" className="skill-badge">React</Badge>
+                      <Badge variant="secondary" className="skill-badge">Next.js</Badge>
+                      <Badge variant="secondary" className="skill-badge">Node.js</Badge>
+                      <Badge variant="secondary" className="skill-badge">Spring Boot</Badge>
+                      <Badge variant="secondary" className="skill-badge">PyTorch</Badge>
+                      <Badge variant="secondary" className="skill-badge">TensorFlow</Badge>
                     </div>
                   </div>
                   {/* Modal removed from About page */}
@@ -50,7 +50,7 @@ export default function AboutPage() {
             </div>
 
             <div className="lg:col-span-2 space-y-6">
-              <Card>
+              <Card className="card-glow">
                 <CardHeader>
                   <CardTitle>My Story</CardTitle>
                 </CardHeader>
@@ -67,7 +67,7 @@ export default function AboutPage() {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="card-glow">
                 <CardHeader>
                   <CardTitle>What I'm Working On</CardTitle>
                 </CardHeader>
@@ -84,8 +84,8 @@ export default function AboutPage() {
           </div>
 
           {/* Education & Interests */}
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="card-glow">
               <CardHeader>
                 <CardTitle>Education</CardTitle>
               </CardHeader>
@@ -108,7 +108,7 @@ export default function AboutPage() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="card-glow">
               <CardHeader>
                 <CardTitle>Interests & Hobbies</CardTitle>
               </CardHeader>

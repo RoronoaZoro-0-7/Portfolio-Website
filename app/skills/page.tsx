@@ -63,20 +63,20 @@ export default function SkillsPage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4">Skills & Expertise</h1>
-            <p className="text-xl text-muted-foreground text-balance">
+          <div className="text-center mb-10 page-hero">
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 section-heading-center">Skills & Expertise</h1>
+            <p className="text-lg text-muted-foreground text-balance mt-6 max-w-2xl mx-auto">
               A comprehensive overview of my technical skills, AI expertise, and professional competencies.
             </p>
           </div>
 
           {/* Technical Skills */}
-          <div className="grid lg:grid-cols-2 gap-8 mb-12">
+          <div className="grid lg:grid-cols-2 gap-6 mb-8">
             {skillCategories.map((category, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <Card key={index} className="card-glow">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <div className="w-3 h-3 bg-primary rounded-full animate-pulse"></div>
+                    <div className="w-3 h-3 theme-dot rounded-full"></div>
                     {category.title}
                   </CardTitle>
                 </CardHeader>
@@ -86,7 +86,7 @@ export default function SkillsPage() {
                       <Badge
                         key={i}
                         variant="outline"
-                        className="text-sm hover:bg-primary hover:text-primary-foreground transition-colors duration-200 cursor-pointer"
+                        className="text-sm skill-badge"
                       >
                         {skill}
                       </Badge>
@@ -98,11 +98,11 @@ export default function SkillsPage() {
           </div>
 
           {/* Soft Skills, Certifications, and Skills Overview */}
-          <div className="grid md:grid-cols-2 gap-8 mb-8">
-            <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <Card className="card-glow">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-secondary rounded-full animate-pulse"></div>
+                  <div className="w-3 h-3 bg-secondary rounded-full"></div>
                   Soft Skills
                 </CardTitle>
               </CardHeader>
@@ -112,7 +112,7 @@ export default function SkillsPage() {
                     <Badge
                       key={index}
                       variant="secondary"
-                      className="text-sm hover:bg-secondary/80 transition-colors duration-200 cursor-pointer"
+                      className="text-sm skill-badge"
                     >
                       {skill}
                     </Badge>
@@ -121,10 +121,10 @@ export default function SkillsPage() {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <Card className="card-glow">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-accent rounded-full animate-pulse"></div>
+                  <div className="w-3 h-3 bg-accent rounded-full"></div>
                   Professional Certifications
                 </CardTitle>
               </CardHeader>
@@ -145,31 +145,19 @@ export default function SkillsPage() {
           </div>
 
           {/* Skills Overview */}
-          <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-            <CardHeader>
-              <CardTitle>Skills Overview</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-4 gap-6 text-center">
-                <div className="hover:scale-105 transition-transform duration-200 cursor-pointer">
-                  <div className="text-2xl font-bold text-primary mb-1">Frontend</div>
-                  <p className="text-sm text-muted-foreground">React, TypeScript</p>
-                </div>
-                <div className="hover:scale-105 transition-transform duration-200 cursor-pointer">
-                  <div className="text-2xl font-bold text-primary mb-1">Backend</div>
-                  <p className="text-sm text-muted-foreground">Node.js, Spring Boot, APIs</p>
-                </div>
-                <div className="hover:scale-105 transition-transform duration-200 cursor-pointer">
-                  <div className="text-2xl font-bold text-primary mb-1">AI/ML</div>
-                  <p className="text-sm text-muted-foreground">TensorFlow, PyTorch, NLP</p>
-                </div>
-                <div className="hover:scale-105 transition-transform duration-200 cursor-pointer">
-                  <div className="text-2xl font-bold text-primary mb-1">Cloud</div>
-                  <p className="text-sm text-muted-foreground">AWS, Docker, Render, Vercel, CI/CD</p>
-                </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {[
+              { label: "Frontend", desc: "React, TypeScript" },
+              { label: "Backend", desc: "Node.js, Spring Boot, APIs" },
+              { label: "AI/ML", desc: "TensorFlow, PyTorch, NLP" },
+              { label: "Cloud", desc: "AWS, Docker, Vercel, CI/CD" },
+            ].map((item, i) => (
+              <div key={i} className="stat-card">
+                <div className="stat-value !text-xl">{item.label}</div>
+                <p className="text-xs text-muted-foreground mt-1">{item.desc}</p>
               </div>
-            </CardContent>
-          </Card>
+            ))}
+          </div>
         </div>
       </div>
     </div>

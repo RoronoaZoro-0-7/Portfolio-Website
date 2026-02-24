@@ -77,7 +77,7 @@ function ProjectCard({ project, size = "default", isMobile = false }: { project:
   const isLarge = size === "large"
 
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full">
+    <Card className="overflow-hidden card-glow h-full">
       <div className={`${isLarge ? "aspect-video" : isMobile ? "h-24" : "aspect-[4/3] md:aspect-video"} bg-muted relative overflow-hidden`}>
         <ImageSlideshow images={project.images} title={project.title} isMobile={isMobile} />
         <div className="absolute top-2 right-2">
@@ -143,22 +143,22 @@ export default function ProjectsPage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4">Projects</h1>
-            <p className="text-xl text-muted-foreground text-balance">
+          <div className="text-center mb-10 page-hero">
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 section-heading-center">Projects</h1>
+            <p className="text-lg text-muted-foreground text-balance mt-6 max-w-2xl mx-auto">
               A showcase of my recent work, featuring web applications, AI tools, and experiments that demonstrate my
               technical skills and creativity.
             </p>
           </div>
 
           {/* Web Projects */}
-          <section className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Web Development Projects</h2>
+          <section className="mb-10">
+            <h2 className="text-3xl font-bold mb-6 section-heading">Web Development Projects</h2>
 
             {/* Featured Web Projects */}
-            <div className="mb-12">
-              <h3 className="text-xl font-semibold mb-6">Featured Projects</h3>
-              <div className="grid lg:grid-cols-2 gap-8">
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold mb-4">Featured Projects</h3>
+              <div className="grid lg:grid-cols-2 gap-6">
                 {featuredWebProjects.map((project, index) => (
                   <ProjectCard key={index} project={project} size="large" />
                 ))}
@@ -192,12 +192,12 @@ export default function ProjectsPage() {
 
           {/* AI Projects */}
           <section>
-            <h2 className="text-3xl font-bold mb-8">AI & Machine Learning Projects</h2>
+            <h2 className="text-3xl font-bold mb-6 section-heading">AI & Machine Learning Projects</h2>
 
             {/* Featured AI Projects */}
-            <div className="mb-12">
-              <h3 className="text-xl font-semibold mb-6">Featured Projects</h3>
-              <div className="grid lg:grid-cols-2 gap-8">
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold mb-4">Featured Projects</h3>
+              <div className="grid lg:grid-cols-2 gap-6">
                 {featuredAIProjects.map((project, index) => (
                   <ProjectCard key={index} project={project} size="large" />
                 ))}
