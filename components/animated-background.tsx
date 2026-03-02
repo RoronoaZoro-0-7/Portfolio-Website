@@ -2,12 +2,11 @@
 
 import { useState, useEffect, useCallback } from 'react'
 
-type BgStyle = 'developer' | 'constellation' | 'grid' | 'hacker'
+type BgStyle = 'developer' | 'constellation' | 'hacker'
 
 const STYLE_LABELS: Record<BgStyle, string> = {
   developer: 'Developer',
   constellation: 'Constellation',
-  grid: 'Grid + Particles',
   hacker: 'Hacker',
 }
 
@@ -32,129 +31,116 @@ function DeveloperBg() {
             }}
           />
         ))}
-        {Array.from({ length: 8 }).map((_, i) => (
+      </div>
+
+      {/* Desktop — clean modern developer aesthetic */}
+      <div className="hidden md:block">
+        {/* Base gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#020617] via-[#0a0f1c] to-[#0a0618]" />
+
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 dev-grid-pattern opacity-[0.03]" />
+
+        {/* Very soft ambient glows - reduced intensity */}
+        <div className="absolute inset-0">
+          <div className="absolute top-[5%] left-[10%] w-[600px] h-[600px] bg-blue-500/8 rounded-full filter blur-[150px]" />
+          <div className="absolute bottom-[5%] right-[5%] w-[500px] h-[500px] bg-purple-500/6 rounded-full filter blur-[150px]" />
+          <div className="absolute top-[40%] left-[40%] w-[400px] h-[400px] bg-cyan-500/5 rounded-full filter blur-[120px]" />
+        </div>
+
+        {/* Floating code card 1 — top right */}
+        <div className="absolute top-[12%] right-[6%] dev-code-card animate-float-gentle" style={{ animationDelay: '0s' }}>
+          <div className="dev-card-header">
+            <span className="dev-card-dot bg-red-400/80" />
+            <span className="dev-card-dot bg-yellow-400/80" />
+            <span className="dev-card-dot bg-green-400/80" />
+            <span className="dev-card-title">app.tsx</span>
+          </div>
+          <div className="dev-card-body">
+            <span className="dev-ln">1</span><span className="dev-kw">export</span> <span className="dev-kw">default</span> <span className="dev-fn">App</span><span className="dev-op">()</span>
+          </div>
+        </div>
+
+        {/* Floating code card 2 — bottom left */}
+        <div className="absolute bottom-[15%] left-[4%] dev-code-card dev-card-purple animate-float-gentle-reverse" style={{ animationDelay: '2s' }}>
+          <div className="dev-card-header purple">
+            <span className="dev-card-dot bg-red-400/80" />
+            <span className="dev-card-dot bg-yellow-400/80" />
+            <span className="dev-card-dot bg-green-400/80" />
+            <span className="dev-card-title">terminal</span>
+          </div>
+          <div className="dev-card-body">
+            <span className="dev-ln">$</span><span className="dev-cmd">npm run dev</span>
+          </div>
+        </div>
+
+        {/* Floating code card 3 — top center-right */}
+        <div className="absolute top-[35%] right-[18%] dev-code-card dev-card-cyan animate-float-gentle" style={{ animationDelay: '4s' }}>
+          <div className="dev-card-header cyan">
+            <span className="dev-card-dot bg-red-400/80" />
+            <span className="dev-card-dot bg-yellow-400/80" />
+            <span className="dev-card-dot bg-green-400/80" />
+            <span className="dev-card-title">utils.ts</span>
+          </div>
+          <div className="dev-card-body">
+            <span className="dev-ln">1</span><span className="dev-kw">export</span> <span className="dev-fn">const</span> <span className="dev-op">format</span>
+          </div>
+        </div>
+
+        {/* Floating geometric shapes */}
+        <div className="absolute top-[25%] left-[55%] dev-hex animate-spin-very-slow" style={{ animationDuration: '40s' }}>
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+            <path d="M40 5 L70 22.5 L70 57.5 L40 75 L10 57.5 L10 22.5 Z" stroke="rgba(34,211,238,0.15)" strokeWidth="1" fill="none" />
+          </svg>
+        </div>
+        <div className="absolute top-[70%] right-[25%] dev-hex animate-spin-very-slow-reverse" style={{ animationDuration: '50s' }}>
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+            <path d="M30 4 L52.5 17 L52.5 43 L30 56 L7.5 43 L7.5 17 Z" stroke="rgba(168,85,247,0.12)" strokeWidth="1" fill="none" />
+          </svg>
+        </div>
+        <div className="absolute top-[15%] left-[35%] dev-hex animate-spin-very-slow" style={{ animationDuration: '35s' }}>
+          <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
+            <path d="M25 3 L44 14.5 L44 35.5 L25 47 L6 35.5 L6 14.5 Z" stroke="rgba(59,130,246,0.1)" strokeWidth="1" fill="none" />
+          </svg>
+        </div>
+
+        {/* Floating brackets/symbols — very subtle */}
+        <div className="absolute top-[40%] right-[40%] animate-pulse-slow opacity-20">
+          <span className="text-3xl text-cyan-300 font-mono">&lt;/&gt;</span>
+        </div>
+        <div className="absolute top-[65%] left-[45%] animate-pulse-slow opacity-15" style={{ animationDelay: '1.5s' }}>
+          <span className="text-2xl text-purple-300 font-mono">{'{}'}</span>
+        </div>
+        <div className="absolute top-[20%] right-[55%] animate-pulse-slow opacity-15" style={{ animationDelay: '3s' }}>
+          <span className="text-xl text-blue-300 font-mono">()</span>
+        </div>
+
+        {/* Connecting lines */}
+        <svg className="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
+          <line x1="15%" y1="20%" x2="45%" y2="35%" stroke="rgba(34,211,238,0.3)" strokeWidth="1" strokeDasharray="4 8" className="animate-dash-flow" />
+          <line x1="55%" y1="30%" x2="85%" y2="45%" stroke="rgba(168,85,247,0.25)" strokeWidth="1" strokeDasharray="4 8" className="animate-dash-flow" style={{ animationDelay: '1s' }} />
+          <line x1="10%" y1="60%" x2="40%" y2="75%" stroke="rgba(59,130,246,0.25)" strokeWidth="1" strokeDasharray="4 8" className="animate-dash-flow" style={{ animationDelay: '2s' }} />
+        </svg>
+
+        {/* Small floating dots */}
+        {Array.from({ length: 15 }).map((_, i) => (
           <div
-            key={`big-${i}`}
-            className="absolute w-2 h-2 bg-blue-300 rounded-full animate-ping"
+            key={i}
+            className="absolute rounded-full animate-pulse-slow"
             style={{
-              left: `${(i * 12 + 5) % 100}%`,
-              top: `${(i * 11 + 10) % 100}%`,
-              animationDelay: `${(i * 0.5) % 4}s`,
+              width: `${2 + (i % 3)}px`,
+              height: `${2 + (i % 3)}px`,
+              left: `${(i * 6.5 + 3) % 95}%`,
+              top: `${(i * 7.2 + 5) % 90}%`,
+              backgroundColor: i % 3 === 0 ? 'rgba(34,211,238,0.4)' : i % 3 === 1 ? 'rgba(168,85,247,0.35)' : 'rgba(59,130,246,0.35)',
+              animationDelay: `${(i * 0.3) % 4}s`,
               animationDuration: `${3 + (i % 3)}s`,
             }}
           />
         ))}
-      </div>
 
-      {/* Desktop — redesigned with glassmorphic elements */}
-      <div className="hidden md:block">
-        {/* Deep layered gradient base */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#020617] via-[#0a0e27] to-[#0c0520]" />
-
-        {/* Soft ambient glows */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-[10%] left-[15%] w-[500px] h-[500px] bg-gradient-to-r from-cyan-500/15 to-blue-500/15 rounded-full filter blur-[100px] animate-float-slow" />
-          <div className="absolute bottom-[10%] right-[10%] w-[450px] h-[450px] bg-gradient-to-r from-purple-500/15 to-pink-500/15 rounded-full filter blur-[100px] animate-float-reverse" />
-          <div className="absolute top-[50%] left-[50%] w-[350px] h-[350px] bg-gradient-to-r from-indigo-500/10 to-cyan-500/10 rounded-full filter blur-[80px] animate-drift-diagonal" />
-        </div>
-
-        {/* SVG flowing connection paths */}
-        <svg className="absolute inset-0 w-full h-full opacity-40" xmlns="http://www.w3.org/2000/svg">
-          <path d="M 0 300 Q 300 200, 600 350 T 1200 300" fill="none" stroke="rgba(34,211,238,0.15)" strokeWidth="1" style={{ animation: 'path-flow 4s ease-in-out infinite' }} />
-          <path d="M 0 500 Q 400 400, 800 550 T 1600 500" fill="none" stroke="rgba(168,85,247,0.12)" strokeWidth="1" style={{ animation: 'path-flow-delayed 4s ease-in-out infinite 2s' }} />
-          <path d="M 200 0 Q 350 300, 500 600 T 800 1200" fill="none" stroke="rgba(59,130,246,0.12)" strokeWidth="1" style={{ animation: 'path-flow-delayed-2 4s ease-in-out infinite 4s' }} />
-        </svg>
-
-        {/* Glassmorphic terminal — top-right */}
-        <div className="absolute top-[15%] right-[8%] animate-glass-float">
-          <div className="mega-terminal">
-            <div className="terminal-header">
-              <div className="terminal-dots">
-                <span className="dot red" />
-                <span className="dot yellow" />
-                <span className="dot green" />
-              </div>
-              <span className="terminal-title">index.tsx</span>
-            </div>
-            <div className="terminal-body">
-              <div className="terminal-line"><span className="code-keyword">import</span> <span className="code-text">React</span> <span className="code-keyword">from</span> <span className="code-string">&apos;react&apos;</span></div>
-              <div className="terminal-line"><span className="code-keyword">import</span> <span className="code-text">{'{ motion }'}</span> <span className="code-keyword">from</span> <span className="code-string">&apos;framer-motion&apos;</span></div>
-              <div className="terminal-line" />
-              <div className="terminal-line"><span className="code-keyword">const</span> <span className="code-text">App</span> <span className="code-operator">=</span> <span className="code-bracket">()</span> <span className="code-operator">=&gt;</span> <span className="code-bracket">{'{'}</span></div>
-              <div className="terminal-line">&nbsp;&nbsp;<span className="code-keyword">return</span> <span className="code-bracket">(</span></div>
-              <div className="terminal-line">&nbsp;&nbsp;&nbsp;&nbsp;<span className="code-bracket">&lt;</span><span className="code-text">Portfolio</span> <span className="json-key">animate</span><span className="code-operator">=</span><span className="code-bracket">{'{'}</span><span className="json-value">true</span><span className="code-bracket">{'}'}</span> <span className="code-bracket">/&gt;</span></div>
-              <div className="terminal-line">&nbsp;&nbsp;<span className="code-bracket">)</span></div>
-              <div className="terminal-line"><span className="code-bracket">{'}'}</span></div>
-            </div>
-          </div>
-        </div>
-
-        {/* Glassmorphic terminal — bottom-left (purple variant) */}
-        <div className="absolute bottom-[12%] left-[5%] animate-glass-float-delayed">
-          <div className="mega-terminal purple">
-            <div className="terminal-header purple">
-              <div className="terminal-dots">
-                <span className="dot red" />
-                <span className="dot yellow" />
-                <span className="dot green" />
-              </div>
-              <span className="terminal-title">terminal</span>
-            </div>
-            <div className="terminal-body">
-              <div className="terminal-line"><span className="prompt">~$</span> <span className="command">npm run build</span></div>
-              <div className="terminal-line"><span className="output">▸ Creating optimized build...</span></div>
-              <div className="terminal-line success"><span className="output">✓ Compiled successfully</span></div>
-              <div className="terminal-line"><span className="output">✓ 13 pages generated</span></div>
-            </div>
-          </div>
-        </div>
-
-        {/* Organic floating symbols */}
-        <div className="absolute top-[35%] left-[42%] organic-symbol animate-organic-float" style={{ animationDelay: '0s' }}>
-          <span className="text-4xl text-cyan-400/25 symbol-glow">&lt;/&gt;</span>
-        </div>
-        <div className="absolute top-[60%] right-[35%] organic-symbol animate-organic-float-reverse" style={{ animationDelay: '3s' }}>
-          <span className="text-3xl text-purple-400/20 symbol-glow">{'{}'}</span>
-        </div>
-        <div className="absolute top-[20%] left-[60%] organic-symbol animate-organic-float" style={{ animationDelay: '6s' }}>
-          <span className="text-2xl text-blue-400/20 symbol-glow">()</span>
-        </div>
-
-        {/* Code bubbles */}
-        <div className="absolute top-[45%] left-[8%] code-bubble animate-bubble-float" style={{ animationDelay: '0s' }}>
-          <span className="bubble-text">const dev = true</span>
-        </div>
-        <div className="absolute top-[75%] right-[20%] code-bubble animate-bubble-float-delayed" style={{ animationDelay: '2s' }}>
-          <span className="bubble-text">async/await</span>
-        </div>
-        <div className="absolute top-[25%] left-[30%] code-bubble animate-bubble-float-slow" style={{ animationDelay: '4s' }}>
-          <span className="bubble-text">npm install</span>
-        </div>
-
-        {/* Connection nodes with pulses */}
-        <div className="absolute top-[30%] left-[20%] connection-node animate-node-organic" style={{ animationDelay: '0s' }}>
-          <div className="node-core bg-cyan-400/40" />
-          <div className="node-ring" />
-          <div className="node-outer-ring" />
-        </div>
-        <div className="absolute top-[65%] left-[70%] connection-node animate-node-organic-delayed" style={{ animationDelay: '2s' }}>
-          <div className="node-core bg-purple-400/40" />
-          <div className="node-ring" style={{ borderColor: 'rgba(168,85,247,0.3)' }} />
-          <div className="node-outer-ring" style={{ borderColor: 'rgba(168,85,247,0.15)' }} />
-        </div>
-
-        {/* Scattered glow particles */}
-        <div className="absolute inset-0">
-          {Array.from({ length: 10 }).map((_, i) => (
-            <div
-              key={i}
-              className={`particle-glow particle-${i + 1}`}
-            />
-          ))}
-        </div>
-
-        {/* Vignette/gradient fade */}
-        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-background/40" />
+        {/* Vignette */}
+        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/30" />
       </div>
     </>
   )
@@ -218,43 +204,7 @@ function ConstellationBg() {
   )
 }
 
-/* ───────────────────────────── Style 3: Grid + Particles ───────────────────────────── */
-function GridBg() {
-  return (
-    <>
-      <div className="absolute inset-0 bg-[#07070f]" />
-
-      {/* Dot grid */}
-      <div className="absolute inset-0 grid-dots" />
-
-      {/* Floating glow particles */}
-      {Array.from({ length: 12 }).map((_, i) => (
-        <div
-          key={i}
-          className="grid-particle"
-          style={{
-            left: `${(i * 8 + 4) % 100}%`,
-            top: `${(i * 9 + 6) % 100}%`,
-            width: `${3 + (i % 3)}px`,
-            height: `${3 + (i % 3)}px`,
-            animationDelay: `${(i * 0.7) % 8}s`,
-            animationDuration: `${10 + (i % 5) * 2}s`,
-          }}
-        />
-      ))}
-
-      {/* Crosshair accent lines */}
-      <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent" />
-      <div className="absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-transparent via-purple-500/10 to-transparent" />
-
-      {/* Corner glow accents */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-cyan-500/5 rounded-full filter blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-purple-500/5 rounded-full filter blur-3xl" />
-    </>
-  )
-}
-
-/* ───────────────────────────── Style 4: Hacker ───────────────────────────── */
+/* ───────────────────────────── Style 3: Hacker ───────────────────────────── */
 function HackerBg() {
   const hexChars = '0123456789ABCDEF'
   return (
@@ -293,40 +243,88 @@ function HackerBg() {
         </div>
       ))}
 
-      {/* Floating terminal boxes */}
-      <div className="absolute top-[12%] left-[5%] hacker-terminal" style={{ animationDelay: '0s' }}>
+      {/* Floating terminal boxes with cybersecurity commands */}
+      <div className="absolute top-[8%] right-[4%] hacker-terminal animate-float-gentle" style={{ animationDelay: '0s' }}>
         <div className="hacker-terminal-header">
           <span className="hacker-terminal-dot" />
-          <span className="text-green-500/60 text-[9px] font-mono ml-1.5">root@sys</span>
+          <span className="text-green-500/60 text-[9px] font-mono ml-1.5">metasploit</span>
         </div>
         <div className="text-[10px] text-green-400/50 font-mono leading-relaxed">
-          <div>$ nmap -sV 192.168.1.0/24</div>
-          <div className="text-green-500/40">Scanning 254 hosts...</div>
-          <div className="text-green-300/60 hacker-blink">PORT &nbsp;STATE &nbsp;SERVICE</div>
+          <div>msf6 &gt; use exploit/multi/handler</div>
+          <div className="text-green-500/40">msf6 exploit &gt; set PAYLOAD windows/meterpreter</div>
+          <div className="text-green-300/60 hacker-blink">[*] Exploit running as background job</div>
         </div>
       </div>
 
-      <div className="absolute top-[55%] right-[6%] hacker-terminal" style={{ animationDelay: '2s' }}>
+      <div className="absolute top-[25%] right-[12%] hacker-terminal animate-float-gentle" style={{ animationDelay: '0.5s' }}>
         <div className="hacker-terminal-header">
           <span className="hacker-terminal-dot" />
-          <span className="text-green-500/60 text-[9px] font-mono ml-1.5">decrypt</span>
+          <span className="text-green-500/60 text-[9px] font-mono ml-1.5">burpsuite</span>
         </div>
         <div className="text-[10px] text-green-400/50 font-mono leading-relaxed">
-          <div>$ ssh -i key.pem admin@10.0.0.1</div>
-          <div className="text-green-300/70 hacker-blink">ACCESS GRANTED</div>
+          <div>Proxy &gt; Intercept is on</div>
+          <div className="text-green-500/40">POST /api/login HTTP/1.1</div>
+          <div className="text-green-300/60 hacker-blink">[!] SQLi vulnerability detected</div>
         </div>
       </div>
 
-      <div className="absolute bottom-[18%] left-[30%] hacker-terminal" style={{ animationDelay: '4s' }}>
+      <div className="absolute top-[12%] left-[5%] hacker-terminal animate-float-gentle" style={{ animationDelay: '1s' }}>
         <div className="hacker-terminal-header">
           <span className="hacker-terminal-dot" />
-          <span className="text-green-500/60 text-[9px] font-mono ml-1.5">trace</span>
+          <span className="text-green-500/60 text-[9px] font-mono ml-1.5">hydra</span>
         </div>
         <div className="text-[10px] text-green-400/50 font-mono leading-relaxed">
-          <div>$ traceroute target.onion</div>
-          <div className="text-green-500/40">1 &nbsp;10.0.0.1 &nbsp;2ms</div>
-          <div className="text-green-500/40">2 &nbsp;172.16.0.1 &nbsp;8ms</div>
-          <div className="text-green-300/60 hacker-blink">3 &nbsp;*.*.*.* &nbsp;???</div>
+          <div>$ hydra -l admin -P wordlist.txt ssh://target</div>
+          <div className="text-green-500/40">[DATA] attacking ssh://192.168.1.100:22</div>
+          <div className="text-green-300/60 hacker-blink">[22][ssh] host: 192.168.1.100 login: admin</div>
+        </div>
+      </div>
+
+      <div className="absolute top-[55%] right-[6%] hacker-terminal animate-float-gentle" style={{ animationDelay: '2s' }}>
+        <div className="hacker-terminal-header">
+          <span className="hacker-terminal-dot" />
+          <span className="text-green-500/60 text-[9px] font-mono ml-1.5">wireshark</span>
+        </div>
+        <div className="text-[10px] text-green-400/50 font-mono leading-relaxed">
+          <div>$ tshark -i eth0 -f "port 443"</div>
+          <div className="text-green-500/40">Capturing on 'eth0'</div>
+          <div className="text-green-300/70 hacker-blink">TCP 192.168.1.1 → 10.0.0.5 [SYN]</div>
+        </div>
+      </div>
+
+      <div className="absolute bottom-[18%] left-[30%] hacker-terminal animate-float-gentle" style={{ animationDelay: '3s' }}>
+        <div className="hacker-terminal-header">
+          <span className="hacker-terminal-dot" />
+          <span className="text-green-500/60 text-[9px] font-mono ml-1.5">hashcat</span>
+        </div>
+        <div className="text-[10px] text-green-400/50 font-mono leading-relaxed">
+          <div>$ hashcat -m 1000 hash.txt rockyou.txt</div>
+          <div className="text-green-500/40">Session: hashcat | Status: Running</div>
+          <div className="text-green-300/60 hacker-blink">Cracked: 847/1000 (84.70%)</div>
+        </div>
+      </div>
+
+      <div className="absolute top-[38%] left-[8%] hacker-terminal animate-float-gentle" style={{ animationDelay: '4s' }}>
+        <div className="hacker-terminal-header">
+          <span className="hacker-terminal-dot" />
+          <span className="text-green-500/60 text-[9px] font-mono ml-1.5">sqlmap</span>
+        </div>
+        <div className="text-[10px] text-green-400/50 font-mono leading-relaxed">
+          <div>$ sqlmap -u "http://target/id=1" --dbs</div>
+          <div className="text-green-500/40">[INFO] testing connection to target URL</div>
+          <div className="text-green-300/60 hacker-blink">[VULN] GET parameter 'id' is injectable</div>
+        </div>
+      </div>
+
+      <div className="absolute bottom-[35%] right-[25%] hacker-terminal animate-float-gentle" style={{ animationDelay: '5s' }}>
+        <div className="hacker-terminal-header">
+          <span className="hacker-terminal-dot" />
+          <span className="text-green-500/60 text-[9px] font-mono ml-1.5">nmap</span>
+        </div>
+        <div className="text-[10px] text-green-400/50 font-mono leading-relaxed">
+          <div>$ nmap -sS -sV -O 10.0.0.0/24</div>
+          <div className="text-green-500/40">22/tcp &nbsp;open &nbsp;ssh &nbsp;OpenSSH 8.2</div>
+          <div className="text-green-300/60 hacker-blink">80/tcp &nbsp;open &nbsp;http &nbsp;Apache 2.4</div>
         </div>
       </div>
 
@@ -344,63 +342,95 @@ function HackerBg() {
 }
 
 /* ───────────────────────────── Style Picker ───────────────────────────── */
-const STYLES: BgStyle[] = ['developer', 'constellation', 'grid', 'hacker']
+const STYLES: BgStyle[] = ['developer', 'constellation', 'hacker']
 
 const THEME_COLORS: Record<BgStyle, string> = {
   developer: '#3b82f6',
   constellation: '#a855f7',
-  grid: '#06b6d4',
   hacker: '#22c55e',
+}
+
+const THEME_DESCRIPTIONS: Record<BgStyle, string> = {
+  developer: 'Blue & cyan glassmorphic',
+  constellation: 'Purple & pink stellar',
+  hacker: 'Green terminal vibes',
 }
 
 function StylePicker({ current, onChange }: { current: BgStyle; onChange: (s: BgStyle) => void }) {
   const [open, setOpen] = useState(false)
 
+  // Close on escape
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false) }
+    if (open) window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [open])
+
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
-      {/* Options panel */}
+    <>
+      {/* Backdrop on mobile when open */}
       {open && (
-        <div className="bg-card/90 backdrop-blur-lg border border-border rounded-xl p-2 shadow-2xl mb-1 min-w-[180px] max-h-[70vh] overflow-y-auto scrollbar-hide animate-in fade-in slide-in-from-bottom-2 duration-200">
-          <p className="text-[10px] uppercase tracking-wider text-muted-foreground px-2 pt-1 pb-2 font-medium sticky top-0 bg-card/90 backdrop-blur-lg z-10">Theme</p>
-          {STYLES.map((s) => (
-            <button
-              key={s}
-              onClick={() => { onChange(s); setOpen(false) }}
-              className={`w-full text-left text-sm px-3 py-1.5 rounded-lg transition-colors flex items-center gap-2 ${
-                current === s
-                  ? 'bg-primary/15 text-primary font-medium'
-                  : 'hover:bg-muted text-foreground'
-              }`}
-            >
-              <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: THEME_COLORS[s] }} />
-              {STYLE_LABELS[s]}
-            </button>
-          ))}
-        </div>
+        <div
+          className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm sm:hidden"
+          onClick={() => setOpen(false)}
+        />
       )}
 
-      {/* Toggle button */}
-      <button
-        onClick={() => setOpen((v) => !v)}
-        className="w-10 h-10 rounded-full bg-card/80 backdrop-blur-lg border shadow-lg flex items-center justify-center hover:bg-card transition-colors group"
-        style={{ borderColor: THEME_COLORS[current] }}
-        title="Change theme"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors"
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-2">
+        {/* Options panel */}
+        {open && (
+          <div className="
+            fixed bottom-0 left-0 right-0 sm:relative sm:bottom-auto sm:left-auto sm:right-auto
+            bg-card/95 backdrop-blur-xl border-t sm:border border-border
+            sm:rounded-xl rounded-t-2xl
+            p-3 sm:p-2 shadow-2xl sm:mb-1
+            sm:min-w-[200px] sm:max-h-[70vh]
+            animate-in fade-in slide-in-from-bottom-4 sm:slide-in-from-bottom-2 duration-200
+          ">
+            {/* Mobile drag handle */}
+            <div className="w-10 h-1 rounded-full bg-muted-foreground/30 mx-auto mb-3 sm:hidden" />
+            <p className="text-[10px] uppercase tracking-wider text-muted-foreground px-2 pt-1 pb-2 font-medium">Theme</p>
+            <div className="grid grid-cols-2 sm:grid-cols-1 gap-1.5 sm:gap-0">
+              {STYLES.map((s) => (
+                <button
+                  key={s}
+                  onClick={() => { onChange(s); setOpen(false) }}
+                  className={`text-left text-sm px-3 py-2.5 sm:py-1.5 rounded-xl sm:rounded-lg transition-all flex items-center gap-2.5 ${
+                    current === s
+                      ? 'bg-[rgba(var(--t1-rgb),0.12)] ring-1 ring-[rgba(var(--t1-rgb),0.25)] font-medium'
+                      : 'hover:bg-muted/60 text-foreground'
+                  }`}
+                >
+                  <span
+                    className={`w-3 h-3 sm:w-2.5 sm:h-2.5 rounded-full shrink-0 transition-shadow ${current === s ? 'shadow-[0_0_8px_2px]' : ''}`}
+                    style={{ background: THEME_COLORS[s], ...(current === s ? { boxShadow: `0 0 8px 2px ${THEME_COLORS[s]}50` } : {}) }}
+                  />
+                  <div className="min-w-0">
+                    <span className="block leading-tight">{STYLE_LABELS[s]}</span>
+                    <span className="block text-[10px] text-muted-foreground leading-tight sm:hidden">{THEME_DESCRIPTIONS[s]}</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+            {/* Safe area spacing for phones with gesture bar */}
+            <div className="h-2 sm:hidden" />
+          </div>
+        )}
+
+        {/* Toggle button */}
+        <button
+          onClick={() => setOpen((v) => !v)}
+          className="w-11 h-11 sm:w-10 sm:h-10 rounded-full bg-card/80 backdrop-blur-lg border shadow-lg flex items-center justify-center hover:bg-card transition-all group active:scale-90"
+          style={{ borderColor: THEME_COLORS[current], boxShadow: `0 0 16px 2px ${THEME_COLORS[current]}20, 0 4px 12px rgba(0,0,0,0.3)` }}
+          title="Change theme"
         >
-          <circle cx="12" cy="12" r="3" />
-          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-        </svg>
-      </button>
-    </div>
+          <span
+            className="w-4 h-4 rounded-full transition-all group-hover:scale-110"
+            style={{ background: `conic-gradient(${THEME_COLORS.developer}, ${THEME_COLORS.constellation}, ${THEME_COLORS.hacker}, ${THEME_COLORS.developer})` }}
+          />
+        </button>
+      </div>
+    </>
   )
 }
 
@@ -408,7 +438,6 @@ function StylePicker({ current, onChange }: { current: BgStyle; onChange: (s: Bg
 const BG_MAP: Record<BgStyle, () => JSX.Element> = {
   developer: DeveloperBg,
   constellation: ConstellationBg,
-  grid: GridBg,
   hacker: HackerBg,
 }
 

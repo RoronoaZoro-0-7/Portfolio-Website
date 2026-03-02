@@ -61,7 +61,7 @@
   --t1-rgb: 59, 130, 246;
   --t2-rgb: 34, 211, 238;
   --t3-rgb: 168, 85, 247;
-  --t-text: #93c5fd;
+  --t-text: #e0f2fe;
   --t-btn-from: #3b82f6;
   --t-btn-to: #8b5cf6;
   --t-btn-h-from: #2563eb;
@@ -1458,6 +1458,167 @@ html {
 .particle-glow.particle-9 { left: 56%; top: 43%; width: 3px; height: 3px; animation-delay: 20s; }
 .particle-glow.particle-10 { left: 89%; top: 67%; width: 2px; height: 2px; animation-delay: 22.5s; }
 
+/* ═══════════════════════════════════════════════════════════════
+   NEW DEVELOPER BACKGROUND - Clean Modern Style
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Grid pattern */
+.dev-grid-pattern {
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Code cards — minimal, elegant */
+.dev-code-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(34, 211, 238, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  width: 180px;
+}
+
+.dev-code-card.dev-card-purple {
+  border-color: rgba(168, 85, 247, 0.2);
+}
+
+.dev-code-card.dev-card-cyan {
+  border-color: rgba(34, 211, 238, 0.25);
+}
+
+.dev-card-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  background: rgba(34, 211, 238, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dev-card-header.purple {
+  background: rgba(168, 85, 247, 0.08);
+}
+
+.dev-card-header.cyan {
+  background: rgba(34, 211, 238, 0.1);
+}
+
+.dev-card-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.dev-card-title {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-left: auto;
+}
+
+.dev-card-body {
+  padding: 10px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dev-ln {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 10px;
+  min-width: 12px;
+}
+
+.dev-kw {
+  color: #c084fc;
+}
+
+.dev-fn {
+  color: #67e8f9;
+}
+
+.dev-op {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.dev-cmd {
+  color: #4ade80;
+}
+
+/* Hexagon styles */
+.dev-hex {
+  opacity: 0.6;
+}
+
+/* Animations for developer bg */
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(1deg);
+  }
+}
+
+@keyframes float-gentle-reverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(10px) rotate(-1deg);
+  }
+}
+
+@keyframes spin-very-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-very-slow-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes dash-flow {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 24; }
+}
+
+.animate-float-gentle {
+  animation: float-gentle 6s ease-in-out infinite;
+}
+
+.animate-float-gentle-reverse {
+  animation: float-gentle-reverse 7s ease-in-out infinite;
+}
+
+.animate-spin-very-slow {
+  animation: spin-very-slow 40s linear infinite;
+}
+
+.animate-spin-very-slow-reverse {
+  animation: spin-very-slow-reverse 50s linear infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+.animate-dash-flow {
+  animation: dash-flow 3s linear infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════ */
+
 /* SUPER OBVIOUS Visual Elements - You Can't Miss These! */
 
 /* MASSIVE Terminal Windows */
@@ -2678,6 +2839,28 @@ img[class*="object-cover"] {
   50% { opacity: 0; }
 }
 
+/* Developer code box in hacker theme */
+.hacker-code-box {
+  background: linear-gradient(135deg, rgba(0, 20, 0, 0.8), rgba(0, 10, 0, 0.9));
+  border: 1px solid rgba(0, 255, 65, 0.12);
+  border-radius: 8px;
+  padding: 10px 12px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 24px rgba(0, 255, 65, 0.06), inset 0 1px 0 rgba(0, 255, 65, 0.05);
+  max-width: 200px;
+  animation: hacker-terminal-appear 1.2s ease-out both;
+}
+
+.hacker-code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(0, 255, 65, 0.08);
+}
+
 /* Random glitch flicker overlay */
 .hacker-glitch {
   background: transparent;
@@ -2960,8 +3143,8 @@ img[class*="object-cover"] {
 /* ── Page Hero / Header Component ── */
 .page-hero {
   position: relative;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .page-hero::before {

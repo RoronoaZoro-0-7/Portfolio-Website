@@ -143,9 +143,9 @@ export default function ProjectsPage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-10 page-hero">
+          <div className="text-center mb-6 page-hero">
             <h1 className="text-4xl md:text-5xl font-extrabold mb-4 section-heading-center">Projects</h1>
-            <p className="text-lg text-muted-foreground text-balance mt-6 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground text-balance mt-3 max-w-2xl mx-auto">
               A showcase of my recent work, featuring web applications, AI tools, and experiments that demonstrate my
               technical skills and creativity.
             </p>

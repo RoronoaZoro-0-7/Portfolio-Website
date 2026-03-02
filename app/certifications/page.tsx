@@ -111,9 +111,9 @@ export default function CertificationsPage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-10 page-hero">
+          <div className="text-center mb-6 page-hero">
             <h1 className="text-4xl md:text-5xl font-extrabold mb-4 section-heading-center">Certifications</h1>
-            <p className="text-lg text-muted-foreground text-balance mt-6 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground text-balance mt-3 max-w-2xl mx-auto">
               Professional certifications and credentials that validate my expertise in various technologies and methodologies.
             </p>
           </div>
@@ -121,7 +121,7 @@ export default function CertificationsPage() {
           {/* Active Certifications */}
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 section-heading">
-              <Award className="h-6 w-6 text-primary" />
+              <Award className="h-6 w-6 theme-accent" />
               Professional Certifications
             </h2>
             <div className="grid lg:grid-cols-2 gap-5">
@@ -133,7 +133,7 @@ export default function CertificationsPage() {
                         <CardTitle className="text-lg mb-1">{cert.title}</CardTitle>
                         <p className="text-sm text-muted-foreground">{cert.issuer}</p>
                       </div>
-                      <Badge variant="default" className="bg-green-100 text-green-800 border-green-200">
+                      <Badge variant="default" className="badge-glow">
                         Certified
                       </Badge>
                     </div>
@@ -199,7 +199,7 @@ export default function CertificationsPage() {
                 <div className="grid md:grid-cols-2 gap-4">
                   {continuingEducation.map((course, index) => (
                     <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-muted/30">
-                      <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                      <div className="w-2 h-2 theme-dot rounded-full mt-2 flex-shrink-0"></div>
                       <div>
                         <h4 className="font-medium">{course.title}</h4>
                         <p className="text-sm text-muted-foreground">{course.provider}</p>

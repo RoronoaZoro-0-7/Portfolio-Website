@@ -18,8 +18,8 @@ export default function CustomCursor() {
 
     console.log('Creating working cursor...')
 
-    // Hide default cursor
-    document.body.style.cursor = 'none'
+    // Hide default cursor on body and all children
+    document.body.classList.add('cursor-hidden')
 
     // Create cursor elements
     const dot = document.createElement("div")
@@ -84,7 +84,7 @@ export default function CustomCursor() {
     circle.style.top = '50px'
 
     return () => {
-      document.body.style.cursor = 'auto'
+      document.body.classList.remove('cursor-hidden')
       document.removeEventListener('mousemove', updateCursor)
       if (dot.parentNode) dot.parentNode.removeChild(dot)
       if (circle.parentNode) circle.parentNode.removeChild(circle)

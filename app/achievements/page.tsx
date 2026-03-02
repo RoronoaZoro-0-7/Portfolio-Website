@@ -10,7 +10,7 @@ const achievements = [
     description: "Got selected as one of the top 10 teams in Inspira Hackathon.",
     icon: Zap,
     category: "Competition",
-    color: "text-red-600",
+    color: "theme-accent",
   },
   {
     title: "1400+ Rating on LeetCode & GeeksforGeeks",
@@ -19,7 +19,7 @@ const achievements = [
     description: "Solved 350+ algorithm problems.",
     icon: Trophy,
     category: "Coding",
-    color: "text-yellow-600",
+    color: "theme-accent-2",
   },
   {
     title: "Teaching Assistant",
@@ -28,7 +28,7 @@ const achievements = [
     description: "Introduction to Programming Lab.",
     icon: Users,
     category: "Academic",
-    color: "text-blue-600",
+    color: "theme-accent-3",
   },
   {
     title: "Co-Secretary",
@@ -37,7 +37,7 @@ const achievements = [
     description: "Leadership role in organizing events and activities.",
     icon: Star,
     category: "Leadership",
-    color: "text-purple-600",
+    color: "theme-accent",
   },
   {
     title: "Joint Secretary",
@@ -46,7 +46,7 @@ const achievements = [
     description: "Organized coding contests and workshops.",
     icon: Code,
     category: "Leadership",
-    color: "text-green-600",
+    color: "theme-accent-2",
   },
   {
     title: "Open Source Contributor",
@@ -55,7 +55,7 @@ const achievements = [
     description: "Website serving 5,000+ participants.",
     icon: Award,
     category: "Open Source",
-    color: "text-orange-600",
+    color: "theme-accent-3",
   },
   {
     title: "Web Team Member",
@@ -64,7 +64,7 @@ const achievements = [
     description: "Contributed to TEDx event website.",
     icon: Zap,
     category: "Community",
-    color: "text-pink-600",
+    color: "theme-accent",
   },
   {
     title: "Secured Mains & Advance All India Ranks",
@@ -73,7 +73,7 @@ const achievements = [
     description: "Mains AIR 12968, Advance AIR 12286.",
     icon: Trophy,
     category: "Exams",
-    color: "text-yellow-600",
+    color: "theme-accent-2",
   },
   {
     title: "Secured Ranks in AP EAMCET & TS EAMCET",
@@ -82,7 +82,7 @@ const achievements = [
     description: "AP EAMCET Rank 981, TS EAMCET Rank 1082.",
     icon: Star,
     category: "Exams",
-    color: "text-blue-600",
+    color: "theme-accent-3",
   },
 ]
 
@@ -105,9 +105,9 @@ export default function AchievementsPage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-10 page-hero">
+          <div className="text-center mb-6 page-hero">
             <h1 className="text-4xl md:text-5xl font-extrabold mb-4 section-heading-center">Achievements</h1>
-            <p className="text-lg text-muted-foreground text-balance mt-6 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground text-balance mt-3 max-w-2xl mx-auto">
               Recognition, awards, and milestones that highlight my professional journey and contributions to the tech
               community.
             </p>
@@ -165,7 +165,7 @@ export default function AchievementsPage() {
                 <div className="grid md:grid-cols-2 gap-4">
                   {recognitions.map((recognition, index) => (
                     <div key={index} className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                      <div className="w-2 h-2 theme-dot rounded-full mt-2 flex-shrink-0"></div>
                       <p className="text-muted-foreground">{recognition}</p>
                     </div>
                   ))}
@@ -175,7 +175,7 @@ export default function AchievementsPage() {
           </section>
 
           {/* Call to Action */}
-          <Card className="mt-8 card-glow" style={{ borderColor: 'rgba(59,130,246,0.2)', background: 'rgba(59,130,246,0.03)' }}>
+          <Card className="mt-8 card-glow" style={{ borderColor: 'rgba(var(--t1-rgb),0.2)', background: 'rgba(var(--t1-rgb),0.03)' }}>
             <CardContent className="pt-6">
               <div className="text-center">
                 <h3 className="text-2xl font-bold mb-4">Ready to Achieve More Together?</h3>

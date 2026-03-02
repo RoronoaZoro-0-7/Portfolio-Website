@@ -41,20 +41,20 @@ export default function ResumePage() {
               <header className="text-center mb-8 pb-6 border-b print:border-gray-300">
                 <h1 className="text-4xl font-bold mb-2 print:text-3xl">Nadipalli Jaswanth</h1>
                 <div className="flex flex-wrap justify-center gap-2 text-sm print:text-xs mt-2">
-                  <a href="mailto:nadipallijaswanth2005@gmail.com" className="text-blue-600 hover:underline">nadipallijaswanth2005@gmail.com</a>
+                  <a href="mailto:nadipallijaswanth2005@gmail.com" className="theme-accent-text hover:underline">nadipallijaswanth2005@gmail.com</a>
                   <span>|</span>
                   <span>+91-9492186976</span>
                 </div>
                 <div className="flex flex-wrap justify-center gap-2 text-sm print:text-xs mt-2">
-                  <a href="https://www.linkedin.com/in/jaswanth-nadipalli-0a51982a4/" className="text-blue-600 hover:underline">LinkedIn</a>
+                  <a href="https://www.linkedin.com/in/jaswanth-nadipalli-0a51982a4/" className="theme-accent-text hover:underline">LinkedIn</a>
                   <span>|</span>
-                  <a href="https://github.com/RoronoaZoro-0-7" className="text-blue-600 hover:underline">GitHub</a>
+                  <a href="https://github.com/RoronoaZoro-0-7" className="theme-accent-text hover:underline">GitHub</a>
                   <span>|</span>
-                  <a href="https://nadipalli-jaswanth-portfolio.vercel.app/" className="text-blue-600 hover:underline">Portfolio</a>
+                  <a href="https://nadipalli-jaswanth-portfolio.vercel.app/" className="theme-accent-text hover:underline">Portfolio</a>
                   <span>|</span>
-                  <a href="https://leetcode.com/u/Roronoa_Zoro_0703/" className="text-blue-600 hover:underline">LeetCode</a>
+                  <a href="https://leetcode.com/u/Roronoa_Zoro_0703/" className="theme-accent-text hover:underline">LeetCode</a>
                   <span>|</span>
-                  <a href="https://www.geeksforgeeks.org/user/user_3xfahfoirv6/" className="text-blue-600 hover:underline">GeeksforGeeks</a>
+                  <a href="https://www.geeksforgeeks.org/user/user_3xfahfoirv6/" className="theme-accent-text hover:underline">GeeksforGeeks</a>
                 </div>
               </header>
 
@@ -191,19 +191,19 @@ export default function ResumePage() {
                 <h3 className="text-2xl font-bold mb-4 print:text-xl border-b-2 border-primary pb-2 print:border-gray-400">Certifications</h3>
                 <div className="space-y-2">
                   <div>
-                    <span className="font-medium text-blue-700">Microsoft Certifications:</span>
-                    <a href="https://learn.microsoft.com/en-us/users/nadipallijaswanth-9743/achievements?tab=tab-created" className="text-blue-600 hover:underline ml-2">Introduction to Machine Learning Concepts</a>,
-                    <a href="https://drive.google.com/file/d/1wT2ax93pswqa3Xet4xlAU0NOKu_RRmlI/view?usp=sharing" className="text-blue-600 hover:underline ml-2">Azure AI Fundamentals</a>
+                    <span className="font-medium theme-accent-text">Microsoft Certifications:</span>
+                    <a href="https://learn.microsoft.com/en-us/users/nadipallijaswanth-9743/achievements?tab=tab-created" className="theme-accent-text hover:underline ml-2">Introduction to Machine Learning Concepts</a>,
+                    <a href="https://drive.google.com/file/d/1wT2ax93pswqa3Xet4xlAU0NOKu_RRmlI/view?usp=sharing" className="theme-accent-text hover:underline ml-2">Azure AI Fundamentals</a>
                   </div>
                   <div>
-                    <span className="font-medium text-blue-700">HackerRank Certifications:</span>
-                    <a href="https://www.hackerrank.com/profile/h422224" className="text-blue-600 hover:underline ml-2">REST API (Intermediate)</a>,
-                    <a href="https://www.hackerrank.com/certificates/iframe/c650912c6b51" className="text-blue-600 hover:underline ml-2">Python (Basic)</a>,
-                    <a href="https://www.hackerrank.com/certificates/iframe/233eec90d630" className="text-blue-600 hover:underline ml-2">SQL (Basic)</a>
+                    <span className="font-medium theme-accent-text">HackerRank Certifications:</span>
+                    <a href="https://www.hackerrank.com/profile/h422224" className="theme-accent-text hover:underline ml-2">REST API (Intermediate)</a>,
+                    <a href="https://www.hackerrank.com/certificates/iframe/c650912c6b51" className="theme-accent-text hover:underline ml-2">Python (Basic)</a>,
+                    <a href="https://www.hackerrank.com/certificates/iframe/233eec90d630" className="theme-accent-text hover:underline ml-2">SQL (Basic)</a>
                   </div>
                   <div>
-                    <span className="font-medium text-blue-700">NPTEL:</span>
-                    <a href="https://drive.google.com/file/d/11E2NgQVL7P1od5SBfuAG0WmIJvniwUjW/view?usp=drive_link" className="text-blue-600 hover:underline ml-2">Python for Data Science</a>
+                    <span className="font-medium theme-accent-text">NPTEL:</span>
+                    <a href="https://drive.google.com/file/d/11E2NgQVL7P1od5SBfuAG0WmIJvniwUjW/view?usp=drive_link" className="theme-accent-text hover:underline ml-2">Python for Data Science</a>
                   </div>
                 </div>
               </section>

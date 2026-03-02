@@ -10,9 +10,9 @@ export default function AboutPage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-10 page-hero">
+          <div className="text-center mb-6 page-hero">
             <h1 className="text-4xl md:text-5xl font-extrabold mb-4 section-heading-center">About Me</h1>
-            <p className="text-lg text-muted-foreground text-balance mt-6 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground text-balance mt-3 max-w-2xl mx-auto">
               Full-Stack Developer & Deep Learning Engineer specializing in NLP, scalable backend systems, and user-centric design. Passionate about building impactful digital solutions for real-world challenges.
             </p>
           </div>

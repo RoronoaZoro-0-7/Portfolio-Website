@@ -54,12 +54,12 @@ const experiences = [
 ]
 
 const topAchievements = [
-  { title: "Top 10 in Inspira Hackathon", icon: Trophy, color: "text-red-500" },
-  { title: "1400+ Rating — LeetCode & GFG", icon: Trophy, color: "text-yellow-500" },
-  { title: "Co-Secretary, CSE Association", icon: Star, color: "text-purple-500" },
-  { title: "Joint Secretary, Coding Club", icon: Code, color: "text-green-500" },
-  { title: "Teaching Assistant at NIT AP", icon: Users, color: "text-blue-500" },
-  { title: "Open Source — 5,000+ users", icon: Award, color: "text-orange-500" },
+  { title: "Top 10 in Inspira Hackathon", icon: Trophy, color: "theme-accent" },
+  { title: "1400+ Rating — LeetCode & GFG", icon: Trophy, color: "theme-accent-2" },
+  { title: "Co-Secretary, CSE Association", icon: Star, color: "theme-accent-3" },
+  { title: "Joint Secretary, Coding Club", icon: Code, color: "theme-accent" },
+  { title: "Teaching Assistant at NIT AP", icon: Users, color: "theme-accent-2" },
+  { title: "Open Source — 5,000+ users", icon: Award, color: "theme-accent-3" },
 ]
 
 const certifications = [
@@ -119,7 +119,7 @@ export default function HomePage() {
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-muted-foreground text-balance mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-muted-foreground text-balance mb-8 max-w-2xl mx-auto leading-relaxed">
               I build scalable web platforms, deep learning systems, and
               user-centric products that solve real-world problems.
             </p>
@@ -159,7 +159,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-4 section-heading-center">What I Do</h2>
-            <p className="text-center text-muted-foreground mb-10 max-w-xl mx-auto">Specialized in three core areas that power modern digital products.</p>
+            <p className="text-center text-muted-foreground mb-6 max-w-xl mx-auto">Specialized in three core areas that power modern digital products.</p>
 
             <div className="grid md:grid-cols-3 gap-6">
               <Card className="card-feature fade-up">
@@ -432,12 +432,12 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center fade-up">
             <h2 className="text-3xl font-bold mb-4 section-heading-center">Let's Work Together</h2>
-            <p className="text-lg text-muted-foreground mb-10 mt-6">
+            <p className="text-lg text-muted-foreground mb-6 mt-4">
               I'm available for freelance projects, full-time roles, and consulting. Drop me a message and I'll get back
               to you within 24 hours.
             </p>
 
-            <div className="flex flex-wrap gap-3 justify-center mb-10">
+            <div className="flex flex-wrap gap-3 justify-center mb-6">
               <Badge className="text-sm px-4 py-2 badge-glow">
                 <span className="w-2 h-2 bg-green-500 rounded-full mr-2 inline-block animate-pulse" />
                 Available for Hire

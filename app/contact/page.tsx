@@ -57,9 +57,9 @@ export default function ContactPage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-10 page-hero">
+          <div className="text-center mb-6 page-hero">
             <h1 className="text-4xl md:text-5xl font-extrabold mb-4 section-heading-center">Contact Me</h1>
-            <p className="text-lg text-muted-foreground text-balance mt-6 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground text-balance mt-3 max-w-2xl mx-auto">
               Let's discuss your project, collaboration opportunities, or just say hello. I'd love to hear from you!
             </p>
           </div>
@@ -70,7 +70,7 @@ export default function ContactPage() {
               <Card className="card-glow">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Mail className="h-5 w-5 text-primary" />
+                    <Mail className="h-5 w-5 theme-accent" />
                     Get in Touch
                   </CardTitle>
                 </CardHeader>
@@ -168,16 +168,15 @@ export default function ContactPage() {
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <span className="text-sm">Freelance Projects</span>
-                      <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Available</span>
+                      <span className="text-xs badge-glow px-2 py-1 rounded">Available</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-sm">Full-time Roles</span>
-                      <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Available</span>
-                      {/* <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Open to Discuss</span> */}
+                      <span className="text-xs badge-glow px-2 py-1 rounded">Available</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-sm">Consulting</span>
-                      <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Available</span>
+                      <span className="text-xs badge-glow px-2 py-1 rounded">Available</span>
                     </div>
                   </div>
                 </CardContent>
@@ -260,10 +259,10 @@ export default function ContactPage() {
                     </Button>
                   </form>
                   {success && (
-                    <div className="mt-4 text-green-600 font-medium">Thank you! Your message has been sent.</div>
+                    <div className="mt-4 font-medium theme-accent-text">Thank you! Your message has been sent.</div>
                   )}
                   {error && (
-                    <div className="mt-4 text-red-600 font-medium">{error}</div>
+                    <div className="mt-4 font-medium text-destructive">{error}</div>
                   )}
                 </CardContent>
               </Card>
