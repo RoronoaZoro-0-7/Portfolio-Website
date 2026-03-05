@@ -58,12 +58,19 @@ const jsonLd = {
 }
 
 export const metadata: Metadata = {
-  title: "Nadipalli Jaswanth Portfolio - Full Stack Developer & AI Engineer",
-  description: "Nadipalli Jaswanth's professional portfolio showcasing full stack development expertise, AI/ML projects, and modern web technologies. Explore projects, skills, and experience of a passionate developer specializing in React, Next.js, Python, and deep learning.",
+  title: {
+    default: "Nadipalli Jaswanth | Full Stack Developer & AI Engineer",
+    template: "%s | Nadipalli Jaswanth"
+  },
+  description: "Nadipalli Jaswanth - Full Stack Developer and AI Engineer specializing in React, Next.js, Python, and machine learning. View my portfolio, projects, and professional experience.",
   keywords: [
     "Nadipalli Jaswanth",
+    "Jaswanth Nadipalli",
+    "Jaswanth",
+    "N Jaswanth",
     "Nadipalli Jaswanth Portfolio",
     "Jaswanth Portfolio", 
+    "Jaswanth Developer",
     "Full Stack Developer",
     "AI Engineer",
     "React Developer",
@@ -78,19 +85,23 @@ export const metadata: Metadata = {
     "Frontend Developer",
     "Backend Developer",
     "Portfolio Website",
-    "Developer Portfolio"
+    "Developer Portfolio",
+    "Nadipalli Jaswanth GitHub",
+    "Nadipalli Jaswanth LinkedIn"
   ],
   authors: [{ name: "Nadipalli Jaswanth", url: "https://nadipalli-jaswanth.vercel.app" }],
   creator: "Nadipalli Jaswanth",
   publisher: "Nadipalli Jaswanth",
   applicationName: "Nadipalli Jaswanth Portfolio",
+  generator: "Next.js",
+  referrer: "origin-when-cross-origin",
   metadataBase: new URL('https://nadipalli-jaswanth.vercel.app'),
   alternates: {
     canonical: "https://nadipalli-jaswanth.vercel.app",
   },
   openGraph: {
-    title: "Nadipalli Jaswanth Portfolio - Full Stack Developer & AI Engineer",
-    description: "Professional portfolio of Nadipalli Jaswanth, showcasing expertise in full stack web development, AI/ML projects, React, Next.js, Python, and modern technologies.",
+    title: "Nadipalli Jaswanth | Full Stack Developer & AI Engineer",
+    description: "Professional portfolio of Nadipalli Jaswanth - Full Stack Developer and AI Engineer. Explore my projects in React, Next.js, Python, and machine learning.",
     url: "https://nadipalli-jaswanth.vercel.app",
     siteName: "Nadipalli Jaswanth Portfolio",
     type: "website",
@@ -100,15 +111,16 @@ export const metadata: Metadata = {
         url: "/professional-developer-headshot.png",
         width: 1200,
         height: 630,
-        alt: "Nadipalli Jaswanth - Full Stack Developer Portfolio"
+        alt: "Nadipalli Jaswanth - Full Stack Developer & AI Engineer"
       }
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nadipalli Jaswanth Portfolio - Full Stack Developer & AI Engineer",
-    description: "Professional portfolio of Nadipalli Jaswanth, Full Stack Developer and AI Engineer specializing in React, Next.js, Python, and machine learning technologies.",
+    title: "Nadipalli Jaswanth | Full Stack Developer & AI Engineer",
+    description: "Professional portfolio of Nadipalli Jaswanth - Full Stack Developer and AI Engineer specializing in React, Next.js, Python, and machine learning.",
     images: ["/professional-developer-headshot.png"],
+    creator: "@jaswanth_nadipalli",
   },
   robots: {
     index: true,
@@ -123,8 +135,19 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  verification: {
+    google: "NltQ-h0FprfGK6OkEzR_t5TTQNPrU570hvUNWSIJfBE",
+  },
   category: "portfolio",
   classification: "Portfolio Website",
+  other: {
+    "author": "Nadipalli Jaswanth",
+    "owner": "Nadipalli Jaswanth",
+    "subject": "Nadipalli Jaswanth - Full Stack Developer & AI Engineer Portfolio",
+    "reply-to": "nadipallijaswanth2005@gmail.com",
+    "coverage": "Worldwide",
+    "distribution": "Global",
+  },
   icons: {
     icon: "/nj-logo.svg",
     shortcut: "/nj-logo.svg",
@@ -152,7 +175,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <meta name="google-site-verification" content="your-google-verification-code" />
         <link rel="canonical" href="https://nadipalli-jaswanth.vercel.app" />
       </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} dark bg-background text-foreground`} suppressHydrationWarning>
