@@ -5,6 +5,7 @@ import { useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import {
   ArrowRight,
   Download,
@@ -24,12 +25,41 @@ import {
   Send,
 } from "lucide-react"
 import { webProjects, aiProjects } from "@/lib/projects"
+import CodingProfiles from "@/components/coding-profiles"
 
-const topSkills = [
-  { category: "Languages", skills: ["Java", "Python", "TypeScript", "JavaScript", "SQL"] },
-  { category: "AI/ML", skills: ["PyTorch", "TensorFlow", "Hugging Face", "LangChain"] },
-  { category: "Web", skills: ["React", "Next.js", "Node.js", "Express", "NestJS", "Spring Boot"] },
-  { category: "Data & Cloud", skills: ["MongoDB", "PostgreSQL", "Redis", "AWS", "Docker"] },
+// Tech icons with descriptions
+const expertiseIcons = [
+  // Languages
+  { name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg", desc: "OOP language for enterprise & Android apps" },
+  { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", desc: "Versatile language for AI/ML & scripting" },
+  { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", desc: "Type-safe JavaScript for scalable apps" },
+  { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg", desc: "Dynamic language for web development" },
+  // Web
+  { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", desc: "Component-based UI library by Meta" },
+  { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", desc: "Full-stack React framework with SSR" },
+  { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", desc: "JavaScript runtime for server-side apps" },
+  { name: "Express", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg", desc: "Minimal Node.js web framework" },
+  { name: "NestJS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg", desc: "Progressive Node.js framework" },
+  { name: "Spring", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg", desc: "Enterprise Java framework" },
+  { name: "Tailwind", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg", desc: "Utility-first CSS framework" },
+  // AI/ML
+  { name: "PyTorch", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg", desc: "Deep learning framework by Meta" },
+  { name: "TensorFlow", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg", desc: "ML platform by Google" },
+  { name: "Scikit-learn", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg", desc: "ML library for classical algorithms" },
+  // Data Science
+  { name: "Pandas", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg", desc: "Data manipulation & analysis library" },
+  { name: "NumPy", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg", desc: "Numerical computing with arrays" },
+  { name: "Matplotlib", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg", desc: "Data visualization library" },
+  // Databases
+  { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg", desc: "Advanced open-source SQL database" },
+  { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg", desc: "NoSQL document database" },
+  { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", desc: "Popular relational database" },
+  { name: "Redis", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg", desc: "In-memory data store & cache" },
+  // Cloud & DevOps
+  { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg", desc: "Amazon cloud computing platform" },
+  { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg", desc: "Container platform for apps" },
+  { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg", desc: "Distributed version control system" },
+  { name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg", desc: "Code hosting & collaboration platform" },
 ]
 
 const experiences = [
@@ -216,12 +246,14 @@ export default function HomePage() {
 
       <hr className="gradient-divider" />
 
-      {/* ── Skills Preview ── */}
+      {/* ── Expertise Section ── */}
       <section className="py-14 home-section">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="flex items-center justify-between mb-8 fade-up">
-              <h2 className="text-3xl font-bold section-heading">Skills & Expertise</h2>
+              <h2 className="text-3xl font-bold section-heading">
+                Expertise in<span className="theme-gradient-text">:</span>
+              </h2>
               <Button asChild variant="ghost" size="sm" className="hover:bg-white/5">
                 <Link href="/skills">
                   View All <ArrowRight className="ml-1 h-4 w-4" />
@@ -229,27 +261,30 @@ export default function HomePage() {
               </Button>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {topSkills.map((cat, i) => (
-                <Card key={i} className="card-glow fade-up" style={{ transitionDelay: `${i * 0.1}s` }}>
-                  <CardContent className="pt-5 pb-5">
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="w-2 h-2 theme-dot rounded-full" />
-                      <span className="text-sm font-semibold">{cat.category}</span>
+            <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+              {expertiseIcons.map((tech, i) => (
+                <Tooltip key={i}>
+                  <TooltipTrigger asChild>
+                    <div
+                      className="group flex flex-col items-center gap-1.5 p-2.5 rounded-lg bg-muted/20 border border-white/5 hover:border-white/20 hover:bg-muted/40 transition-all duration-300 fade-up cursor-default"
+                      style={{ transitionDelay: `${i * 0.03}s` }}
+                    >
+                      <div className="relative w-8 h-8 md:w-9 md:h-9 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <img
+                          src={tech.icon}
+                          alt={tech.name}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      <span className="text-[10px] md:text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors text-center">
+                        {tech.name}
+                      </span>
                     </div>
-                    <div className="flex flex-wrap gap-1.5">
-                      {cat.skills.map((skill, j) => (
-                        <Badge
-                          key={j}
-                          variant="outline"
-                          className="text-xs skill-badge"
-                        >
-                          {skill}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
+                  </TooltipTrigger>
+                  <TooltipContent side="top" className="max-w-[200px] text-center">
+                    <p>{tech.desc}</p>
+                  </TooltipContent>
+                </Tooltip>
               ))}
             </div>
           </div>
@@ -326,38 +361,38 @@ export default function HomePage() {
 
             <div className="grid md:grid-cols-2 gap-6">
               {featuredProjects.map((project, i) => (
-                <Card key={i} className="overflow-hidden card-glow fade-up" style={{ transitionDelay: `${i * 0.1}s` }}>
-                  <div className="aspect-video bg-muted relative overflow-hidden">
-                    <img
-                      src={project.images[0] || "/placeholder.svg"}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                    />
-                    <div className="absolute top-2 right-2">
-                      <Badge variant="default" className="text-xs badge-glow">
-                        {project.status}
-                      </Badge>
-                    </div>
-                  </div>
-                  <CardContent className="pt-4">
-                    <Link href={`/projects/${project.id}`} className="hover:text-[var(--t-text)] transition-colors">
-                      <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
-                    </Link>
-                    <p className="text-muted-foreground text-sm line-clamp-2 mb-3">{project.description}</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {project.technologies.slice(0, 4).map((t, j) => (
-                        <Badge key={j} variant="outline" className="text-xs skill-badge">
-                          {t}
+                <Link key={i} href={`/projects/${project.id}`} className="block">
+                  <Card className="overflow-hidden card-glow fade-up cursor-pointer" style={{ transitionDelay: `${i * 0.1}s` }}>
+                    <div className="aspect-video bg-muted relative overflow-hidden">
+                      <img
+                        src={project.images[0] || "/placeholder.svg"}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                      />
+                      <div className="absolute top-2 right-2">
+                        <Badge variant="default" className="text-xs badge-glow">
+                          {project.status}
                         </Badge>
-                      ))}
-                      {project.technologies.length > 4 && (
-                        <Badge variant="outline" className="text-xs">
-                          +{project.technologies.length - 4}
-                        </Badge>
-                      )}
+                      </div>
                     </div>
-                  </CardContent>
-                </Card>
+                    <CardContent className="pt-4">
+                      <h3 className="text-lg font-semibold mb-2 hover:text-[var(--t-text)] transition-colors">{project.title}</h3>
+                      <p className="text-muted-foreground text-sm line-clamp-2 mb-3">{project.description}</p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.technologies.slice(0, 4).map((t, j) => (
+                          <Badge key={j} variant="outline" className="text-xs skill-badge">
+                            {t}
+                          </Badge>
+                        ))}
+                        {project.technologies.length > 4 && (
+                          <Badge variant="outline" className="text-xs">
+                            +{project.technologies.length - 4}
+                          </Badge>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
             </div>
           </div>
@@ -381,12 +416,12 @@ export default function HomePage() {
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {topAchievements.map((a, i) => (
-                <div key={i} className="card-pill fade-up" style={{ transitionDelay: `${i * 0.08}s` }}>
+                <Link key={i} href="/achievements" className="card-pill fade-up cursor-pointer" style={{ transitionDelay: `${i * 0.08}s` }}>
                   <div className={`pill-icon bg-muted/50 ${a.color}`}>
                     <a.icon className="h-4 w-4" />
                   </div>
                   <p className="font-medium text-sm leading-snug">{a.title}</p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -410,7 +445,7 @@ export default function HomePage() {
 
             <div className="grid sm:grid-cols-2 gap-3">
               {certifications.map((cert, i) => (
-                <div key={i} className="card-mini fade-up" style={{ transitionDelay: `${i * 0.1}s` }}>
+                <Link key={i} href="/certifications" className="card-mini fade-up cursor-pointer" style={{ transitionDelay: `${i * 0.1}s` }}>
                   <div className="mini-dot" />
                   <div className="min-w-0">
                     <p className="font-medium text-sm truncate">
@@ -418,12 +453,17 @@ export default function HomePage() {
                       <span className="mini-issuer">{cert.issuer}</span>
                     </p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
         </div>
       </section>
+
+      <hr className="gradient-divider" />
+
+      {/* ── Coding Profiles ── */}
+      <CodingProfiles />
 
       <hr className="gradient-divider" />
 

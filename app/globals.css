@@ -2955,6 +2955,8 @@ img[class*="object-cover"] {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   overflow: hidden;
 }
 
@@ -3013,6 +3015,8 @@ img[class*="object-cover"] {
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: 0.75rem;
   padding: 0.875rem 1rem;
   display: flex;
@@ -3061,6 +3065,8 @@ img[class*="object-cover"] {
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: 0.75rem;
   padding: 1rem 1.25rem;
   display: flex;
@@ -3199,6 +3205,8 @@ img[class*="object-cover"] {
   padding: 1.25rem 1rem;
   border-radius: 0.75rem;
   background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.06);
   transition: all 0.3s ease;
   overflow: hidden;

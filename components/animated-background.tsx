@@ -2,11 +2,10 @@
 
 import { useState, useEffect, useCallback } from 'react'
 
-type BgStyle = 'developer' | 'constellation' | 'hacker'
+type BgStyle = 'developer' | 'hacker'
 
 const STYLE_LABELS: Record<BgStyle, string> = {
   developer: 'Developer',
-  constellation: 'Constellation',
   hacker: 'Hacker',
 }
 
@@ -146,65 +145,7 @@ function DeveloperBg() {
   )
 }
 
-/* ───────────────────────────── Style 2: Constellation ───────────────────────────── */
-function ConstellationBg() {
-  return (
-    <>
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a1a] via-[#0d0d2b] to-[#0a0a1a]" />
-
-      {/* Fixed star dots */}
-      {Array.from({ length: 40 }).map((_, i) => (
-        <div
-          key={i}
-          className="constellation-star"
-          style={{
-            left: `${(i * 2.5 + 1) % 100}%`,
-            top: `${(i * 3.7 + 2) % 100}%`,
-            width: `${1.5 + (i % 3)}px`,
-            height: `${1.5 + (i % 3)}px`,
-            animationDelay: `${(i * 0.3) % 5}s`,
-          }}
-        />
-      ))}
-
-      {/* Connecting lines (SVG) */}
-      <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-        <line x1="10%" y1="15%" x2="25%" y2="30%" className="constellation-line anim-line-1" />
-        <line x1="25%" y1="30%" x2="45%" y2="20%" className="constellation-line anim-line-2" />
-        <line x1="45%" y1="20%" x2="60%" y2="40%" className="constellation-line anim-line-3" />
-        <line x1="60%" y1="40%" x2="80%" y2="25%" className="constellation-line anim-line-1" />
-        <line x1="80%" y1="25%" x2="92%" y2="45%" className="constellation-line anim-line-2" />
-        <line x1="15%" y1="60%" x2="35%" y2="75%" className="constellation-line anim-line-3" />
-        <line x1="35%" y1="75%" x2="55%" y2="65%" className="constellation-line anim-line-1" />
-        <line x1="55%" y1="65%" x2="75%" y2="80%" className="constellation-line anim-line-2" />
-        <line x1="75%" y1="80%" x2="90%" y2="70%" className="constellation-line anim-line-3" />
-        <line x1="25%" y1="30%" x2="35%" y2="75%" className="constellation-line anim-line-2" />
-        <line x1="45%" y1="20%" x2="55%" y2="65%" className="constellation-line anim-line-3" />
-        <line x1="80%" y1="25%" x2="75%" y2="80%" className="constellation-line anim-line-1" />
-      </svg>
-
-      {/* Glowing nodes */}
-      {[
-        { x: 10, y: 15, c: 'cyan' }, { x: 25, y: 30, c: 'blue' }, { x: 45, y: 20, c: 'purple' },
-        { x: 60, y: 40, c: 'cyan' }, { x: 80, y: 25, c: 'blue' }, { x: 92, y: 45, c: 'purple' },
-        { x: 15, y: 60, c: 'cyan' }, { x: 35, y: 75, c: 'blue' }, { x: 55, y: 65, c: 'purple' },
-        { x: 75, y: 80, c: 'cyan' }, { x: 90, y: 70, c: 'blue' },
-      ].map((n, i) => (
-        <div
-          key={i}
-          className={`constellation-node constellation-node-${n.c}`}
-          style={{ left: `${n.x}%`, top: `${n.y}%`, animationDelay: `${i * 0.4}s` }}
-        />
-      ))}
-
-      {/* Soft radial glow */}
-      <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-blue-500/5 rounded-full filter blur-3xl animate-pulse-glow" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/5 rounded-full filter blur-3xl animate-pulse-glow animation-delay-2000" />
-    </>
-  )
-}
-
-/* ───────────────────────────── Style 3: Hacker ───────────────────────────── */
+/* ───────────────────────────── Style 2: Hacker ───────────────────────────── */
 function HackerBg() {
   const hexChars = '0123456789ABCDEF'
   return (
@@ -342,17 +283,15 @@ function HackerBg() {
 }
 
 /* ───────────────────────────── Style Picker ───────────────────────────── */
-const STYLES: BgStyle[] = ['developer', 'constellation', 'hacker']
+const STYLES: BgStyle[] = ['developer', 'hacker']
 
 const THEME_COLORS: Record<BgStyle, string> = {
   developer: '#3b82f6',
-  constellation: '#a855f7',
   hacker: '#22c55e',
 }
 
 const THEME_DESCRIPTIONS: Record<BgStyle, string> = {
   developer: 'Blue & cyan glassmorphic',
-  constellation: 'Purple & pink stellar',
   hacker: 'Green terminal vibes',
 }
 
@@ -426,7 +365,7 @@ function StylePicker({ current, onChange }: { current: BgStyle; onChange: (s: Bg
         >
           <span
             className="w-4 h-4 rounded-full transition-all group-hover:scale-110"
-            style={{ background: `conic-gradient(${THEME_COLORS.developer}, ${THEME_COLORS.constellation}, ${THEME_COLORS.hacker}, ${THEME_COLORS.developer})` }}
+            style={{ background: `conic-gradient(${THEME_COLORS.developer}, ${THEME_COLORS.hacker}, ${THEME_COLORS.developer})` }}
           />
         </button>
       </div>
@@ -437,7 +376,6 @@ function StylePicker({ current, onChange }: { current: BgStyle; onChange: (s: Bg
 /* ───────────────────────────── Main Export ───────────────────────────── */
 const BG_MAP: Record<BgStyle, () => JSX.Element> = {
   developer: DeveloperBg,
-  constellation: ConstellationBg,
   hacker: HackerBg,
 }
 

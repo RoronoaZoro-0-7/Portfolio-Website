@@ -2,7 +2,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Award } from "lucide-react"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { ExternalLink, Award, X, ZoomIn, ZoomOut } from "lucide-react"
 
 const certifications = [
   {
@@ -95,15 +96,22 @@ export default function CertificationsPage() {
   const activeCertifications = certifications
   const [modalOpen, setModalOpen] = useState(false)
   const [modalImage, setModalImage] = useState("")
+  const [modalTitle, setModalTitle] = useState("")
+  const [zoomLevel, setZoomLevel] = useState(1)
 
-  const handleImageClick = (img: string) => {
+  const handleImageClick = (img: string, title: string) => {
     setModalImage(img)
+    setModalTitle(title)
+    setZoomLevel(1)
     setModalOpen(true)
   }
 
-  const closeModal = () => {
-    setModalOpen(false)
-    setModalImage("")
+  const handleZoomIn = () => {
+    setZoomLevel(prev => Math.min(prev + 0.25, 3))
+  }
+
+  const handleZoomOut = () => {
+    setZoomLevel(prev => Math.max(prev - 0.25, 0.5))
   }
 
   return (
@@ -139,13 +147,18 @@ export default function CertificationsPage() {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="mb-4 cert-image-wrap">
+                    <div 
+                      className="mb-4 relative cursor-pointer group"
+                      onClick={() => handleImageClick(cert.certificateImage, cert.title)}
+                    >
                       <img
                         src={cert.certificateImage || "/placeholder.svg?height=300&width=300&query=professional certificate"}
                         alt={`${cert.title} Certificate`}
-                        className="w-full h-68 object-cover rounded-lg border cursor-pointer"
-                        onClick={() => handleImageClick(cert.certificateImage)}
+                        className="w-full h-68 object-cover rounded-lg border group-hover:opacity-90 transition-opacity"
                       />
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/30 rounded-lg pointer-events-none">
+                        <ZoomIn className="w-8 h-8 text-white" />
+                      </div>
                     </div>
 
                     <p className="text-muted-foreground mb-4 text-sm leading-relaxed">{cert.description}</p>
@@ -174,19 +187,59 @@ export default function CertificationsPage() {
           </section>
 
           {/* Certificate Modal */}
-          {modalOpen && (
-            <div
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90"
-              onClick={closeModal}
+          <Dialog open={modalOpen} onOpenChange={setModalOpen}>
+            <DialogContent 
+              className="max-w-[95vw] md:max-w-[85vw] lg:max-w-[75vw] max-h-[95vh] p-0 bg-black/95 border-white/10 overflow-hidden"
+              showCloseButton={false}
             >
-              <img
-                src={modalImage}
-                alt="Certificate Preview"
-                className="max-w-3xl max-h-[80vh] rounded-lg shadow-2xl border-4 border-white"
-                onClick={e => e.stopPropagation()}
-              />
-            </div>
-          )}
+              <DialogTitle className="sr-only">{modalTitle}</DialogTitle>
+              <div className="relative flex flex-col h-full">
+                {/* Header */}
+                <div className="flex items-center justify-between p-4 border-b border-white/10">
+                  <h3 className="text-lg font-semibold text-white truncate pr-4">{modalTitle}</h3>
+                  <div className="flex items-center gap-2">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="h-8 w-8 bg-white/10 border-white/20 hover:bg-white/20"
+                      onClick={handleZoomOut}
+                      disabled={zoomLevel <= 0.5}
+                    >
+                      <ZoomOut className="h-4 w-4" />
+                    </Button>
+                    <span className="text-sm text-white/70 w-16 text-center">{Math.round(zoomLevel * 100)}%</span>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="h-8 w-8 bg-white/10 border-white/20 hover:bg-white/20"
+                      onClick={handleZoomIn}
+                      disabled={zoomLevel >= 3}
+                    >
+                      <ZoomIn className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="h-8 w-8 bg-white/10 border-white/20 hover:bg-white/20 ml-2"
+                      onClick={() => setModalOpen(false)}
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+                
+                {/* Image Container */}
+                <div className="flex-1 overflow-auto p-4 flex items-center justify-center min-h-[60vh]">
+                  <img
+                    src={modalImage}
+                    alt={modalTitle}
+                    className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl transition-transform duration-200"
+                    style={{ transform: `scale(${zoomLevel})` }}
+                  />
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
 
           {/* Continuing Education */}
           <section>
