@@ -1,7 +1,7 @@
 {
-  "name": "Nadipalli Jaswanth Portfolio",
-  "short_name": "NJ Portfolio",
-  "description": "Professional portfolio of Nadipalli Jaswanth - Full Stack Developer & Software Engineer",
+  "name": "Jaswanth Portfolio | Full Stack Developer",
+  "short_name": "Jaswanth",
+  "description": "Professional portfolio of Jaswanth - Full Stack Developer & AI Engineer",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f0f23",
@@ -9,9 +9,15 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/nj-logo.svg",
+      "src": "/favicon.svg",
       "sizes": "any",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/professional-developer-headshot.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
   "categories": ["developer", "portfolio", "professional"],

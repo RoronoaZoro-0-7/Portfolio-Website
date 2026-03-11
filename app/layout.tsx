@@ -11,8 +11,9 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Nadipalli Jaswanth",
-  "url": "https://nadipalli-jaswanth.vercel.app",
-  "image": "https://nadipalli-jaswanth.vercel.app/professional-developer-headshot.png",
+  "alternateName": ["Jaswanth", "Jaswanth Nadipalli", "N Jaswanth", "Jaswanth N"],
+  "url": "https://portfolio.jaswanth.top",
+  "image": "https://portfolio.jaswanth.top/professional-developer-headshot.png",
   "sameAs": [
     "https://github.com/RoronoaZoro-0-7",
     "https://linkedin.com/in/nadipalli-jaswanth",
@@ -55,26 +56,30 @@ const jsonLd = {
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://nadipalli-jaswanth.vercel.app"
-  }
+    "@id": "https://portfolio.jaswanth.top"
+  },
+  "identifier": "jaswanth-portfolio",
+  "disambiguatingDescription": "Jaswanth is a Full Stack Developer and AI Engineer based in India, known for expertise in React, Next.js, Python, and Machine Learning."
 }
 
 export const metadata: Metadata = {
   title: {
-    default: "Nadipalli Jaswanth | Full Stack Developer & AI Engineer",
-    template: "%s | Nadipalli Jaswanth"
+    default: "Jaswanth Nadipalli | Full Stack Developer & AI Engineer Portfolio",
+    template: "%s | Jaswanth - Developer Portfolio"
   },
-  description: "Nadipalli Jaswanth - Full Stack Developer and AI Engineer specializing in React, Next.js, Python, and machine learning. View my portfolio, projects, and professional experience.",
+  description: "Jaswanth (Nadipalli Jaswanth) - Full Stack Developer and AI Engineer specializing in React, Next.js, Python, and machine learning. View Jaswanth's portfolio, projects, and professional experience.",
   keywords: [
-    "Nadipalli Jaswanth",
-    "Jaswanth Nadipalli",
     "Jaswanth",
+    "Jaswanth Nadipalli",
+    "Nadipalli Jaswanth",
+    "Jaswanth Portfolio",
+    "Jaswanth Developer",
+    "Jaswanth Full Stack Developer",
+    "Jaswanth AI Engineer",
+    "Jaswanth NIT AP",
     "N Jaswanth",
     "Nadipalli Jaswanth Portfolio",
-    "Jaswanth Portfolio", 
-    "Jaswanth Developer",
-    "NJ",
-    "N J",
+    "Jaswanth Software Engineer",
     "Nadipalli",
     "AI Developer",
     "Full Stack Developer",
@@ -151,21 +156,21 @@ export const metadata: Metadata = {
     "Hire AI Engineer",
     "Freelance Developer India"
   ],
-  authors: [{ name: "Nadipalli Jaswanth", url: "https://nadipalli-jaswanth.vercel.app" }],
+  authors: [{ name: "Nadipalli Jaswanth", url: "https://portfolio.jaswanth.top" }],
   creator: "Nadipalli Jaswanth",
   publisher: "Nadipalli Jaswanth",
-  applicationName: "Nadipalli Jaswanth Portfolio",
+  applicationName: "Jaswanth Portfolio",
   generator: "Next.js",
   referrer: "origin-when-cross-origin",
-  metadataBase: new URL('https://nadipalli-jaswanth.vercel.app'),
+  metadataBase: new URL('https://portfolio.jaswanth.top'),
   alternates: {
-    canonical: "https://nadipalli-jaswanth.vercel.app",
+    canonical: "https://portfolio.jaswanth.top",
   },
   openGraph: {
-    title: "Nadipalli Jaswanth | Full Stack Developer & AI Engineer",
-    description: "Professional portfolio of Nadipalli Jaswanth - Full Stack Developer and AI Engineer. Explore my projects in React, Next.js, Python, and machine learning.",
-    url: "https://nadipalli-jaswanth.vercel.app",
-    siteName: "Nadipalli Jaswanth Portfolio",
+    title: "Jaswanth | Full Stack Developer & AI Engineer Portfolio",
+    description: "Professional portfolio of Jaswanth (Nadipalli Jaswanth) - Full Stack Developer and AI Engineer. Explore my projects in React, Next.js, Python, and machine learning.",
+    url: "https://portfolio.jaswanth.top",
+    siteName: "Jaswanth Portfolio",
     type: "website",
     locale: "en_US",
     images: [
@@ -237,7 +242,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <link rel="canonical" href="https://nadipalli-jaswanth.vercel.app" />
+        <link rel="canonical" href="https://portfolio.jaswanth.top" />
       </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} dark bg-background text-foreground`} suppressHydrationWarning>
         <CustomCursor />
